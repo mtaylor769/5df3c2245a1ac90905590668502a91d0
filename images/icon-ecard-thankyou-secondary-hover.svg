@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 5</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Letter-Copy-9" transform="translate(-168.000000, -197.000000)">
+            <g id="Group-5" transform="translate(168.000000, 197.000000)">
+                <path d="M18.4264706,5 C19.75,5 20.7794118,6.02941176 20.7794118,7.35294118 C20.7794118,8.67647059 19.75,9.70588235 18.4264706,9.70588235 C17.1029412,9.70588235 16.0735294,8.67647059 16.0735294,7.35294118 C16.0735294,6.02941176 17.1029412,5 18.4264706,5 Z" id="Path" fill="#EC5901"></path>
+                <rect id="Rectangle-4" fill="#BA4500" x="6" y="6.25" width="5" height="2" rx="1"></rect>
+                <rect id="Rectangle-4" fill="#FFCB00" transform="translate(2.000000, 7.750000) rotate(90.000000) translate(-2.000000, -7.750000) " x="1.5" y="5.75" width="1" height="4" rx="0.5"></rect>
+                <rect id="Rectangle-4" fill="#FFCB00" x="6" y="0.25" width="1" height="4" rx="0.5"></rect>
+                <rect id="Rectangle-4" fill="#FFCB00" transform="translate(2.767767, 4.017767) rotate(-45.000000) translate(-2.767767, -4.017767) " x="2.26776695" y="2.01776695" width="1" height="4" rx="0.5"></rect>
+                <path d="M13.5,25.2941176 C6.58823529,25.2941176 1,19.7058824 1,12.7941176 C1,12.7941176 7.25,15.5147059 13.7205882,15.5147059 C20.3382353,15.5147059 25.9264706,12.7941176 25.9264706,12.7941176 C26,19.7058824 20.4117647,25.2941176 13.5,25.2941176 Z" id="Path" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>

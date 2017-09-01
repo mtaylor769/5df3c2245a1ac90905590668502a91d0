@@ -1,0 +1,21 @@
+{
+  "name": "rewards",
+  "authors": [
+    "Mike Taylor <mike@whatsmycut.com>"
+  ],
+  "description": "pblcdmn code",
+  "main": "scripts/main.js",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-flatpickr": "^2.5.0"
+  }
+}
