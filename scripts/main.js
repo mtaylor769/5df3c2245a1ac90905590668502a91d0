@@ -62,6 +62,111 @@ var users = [{
             ecard: ["anniversary", "birthday", "congratulations", "thank you"],
             likes: ["Janice Camelo", "Steffanie Helbling", "Darcie Mcgurn", "Asia Germain", "Catrice Monnerjahn"]
         }
+    }, {
+        name: "Mickey Mouse",
+        imgUrl: "./images/head_guy1.png",
+        title: "Leader of the Club",
+        location: "Orlando, FL",
+        award: "ears",
+        date: "2017-07-16T18:25:43.511Z",
+        actions: {
+            comments: [{
+                user: "user 1",
+                comment: "great job"
+            }, {
+                user: "user 2",
+                comment: "excellent!"
+            }, {
+                user: "user 3",
+                comment: "well done!"
+            }],
+            ecard: ["anniversary", "birthday", "congratulations", "thank you"],
+            likes: ["Janice Camelo", "Steffanie Helbling", "Darcie Mcgurn", "Asia Germain", "Catrice Monnerjahn"]
+        }
+    }, {
+        name: "Donald Duck",
+        imgUrl: "./images/head_guy1.png",
+        title: "Admiral",
+        location: "Orlando, FL",
+        award: "Angry award",
+        date: "2017-07-02T18:25:43.511Z",
+        actions: {
+            comments: [{
+                user: "user 1",
+                comment: "great job"
+            }, {
+                user: "user 2",
+                comment: "excellent!"
+            }, {
+                user: "user 3",
+                comment: "well done!"
+            }],
+            ecard: ["anniversary", "birthday", "congratulations", "thank you"],
+            likes: ["Janice Camelo", "Steffanie Helbling", "Darcie Mcgurn", "Asia Germain", "Catrice Monnerjahn", "Mickey Mouse"]
+        }
+    }, {
+        name: "Huey Duck",
+        imgUrl: "./images/head_guy1.png",
+        title: "Admiral",
+        location: "Orlando, FL",
+        award: "Angry award",
+        date: "2017-07-02T18:25:43.511Z",
+        actions: {
+            comments: [{
+                user: "user 1",
+                comment: "great job"
+            }, {
+                user: "user 2",
+                comment: "excellent!"
+            }, {
+                user: "user 3",
+                comment: "well done!"
+            }],
+            ecard: ["anniversary", "birthday", "congratulations", "thank you"],
+            likes: ["Janice Camelo", "Steffanie Helbling", "Darcie Mcgurn", "Asia Germain", "Catrice Monnerjahn", "Mickey Mouse"]
+        }
+    }, {
+        name: "Dewet Duck",
+        imgUrl: "./images/head_guy1.png",
+        title: "Admiral",
+        location: "Orlando, FL",
+        award: "Angry award",
+        date: "2017-07-02T18:25:43.511Z",
+        actions: {
+            comments: [{
+                user: "user 1",
+                comment: "great job"
+            }, {
+                user: "user 2",
+                comment: "excellent!"
+            }, {
+                user: "user 3",
+                comment: "well done!"
+            }],
+            ecard: ["anniversary", "birthday", "congratulations", "thank you"],
+            likes: ["Janice Camelo", "Steffanie Helbling", "Darcie Mcgurn", "Asia Germain", "Catrice Monnerjahn", "Mickey Mouse"]
+        }
+    }, {
+        name: "Louie Duck",
+        imgUrl: "./images/head_guy1.png",
+        title: "Admiral",
+        location: "Orlando, FL",
+        award: "Angry award",
+        date: "2017-07-02T18:25:43.511Z",
+        actions: {
+            comments: [{
+                user: "user 1",
+                comment: "great job"
+            }, {
+                user: "user 2",
+                comment: "excellent!"
+            }, {
+                user: "user 3",
+                comment: "well done!"
+            }],
+            ecard: ["anniversary", "birthday", "congratulations", "thank you"],
+            likes: ["Janice Camelo", "Steffanie Helbling", "Darcie Mcgurn", "Asia Germain", "Catrice Monnerjahn", "Mickey Mouse"]
+        }
     }],
     users2 = [{
         name: "Janice Camelo",
