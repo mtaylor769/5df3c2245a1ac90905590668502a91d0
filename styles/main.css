@@ -8060,7 +8060,8 @@ body {
     -ms-flex-align: center;
     align-items: center;
     background: #007fb6;
-    margin-bottom: 23px
+    margin-bottom: 23px;
+    margin-top: 10px;
 }
 .userblocks__header-primary>div:first-child {
     text-transform: lowercase;
@@ -9051,8 +9052,6 @@ body {
     }
 }
 .userblocks__toggle-secondary {
-    position: relative;
-    top: -304px;
     width: 100%;
     background: #ffcb00;
     font-family: Roboto;
