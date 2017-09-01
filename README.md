@@ -1,7 +1,7 @@
 # Public Domain - rewards project
 
-## Project: Rewards
-
+### Project: 
+* name: rewards
 * date: 20170901
 * author: mike@whatsmycut.com Sept 1, 2017
 
