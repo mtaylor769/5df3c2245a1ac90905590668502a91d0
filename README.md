@@ -1,1 +1,9 @@
-# 5df3c2245a1ac90905590668502a91d0
+# Public Domain - rewards project
+
+## Project: Rewards
+
+* date: 20170901
+* author: mike@whatsmycut.com Sept 1, 2017
+
+### Scope:
+Edits to existing UI/UX scripts and CSS
