@@ -9051,6 +9051,8 @@ body {
     }
 }
 .userblocks__toggle-secondary {
+    position: relative;
+    top: -304px;
     width: 100%;
     background: #ffcb00;
     font-family: Roboto;
@@ -9059,8 +9061,7 @@ body {
     font-size: 1.8rem;
     line-height: 1.5;
     color: #ec5901;
-    height: 30px;
-    min-height: 30px
+    min-height: 35px
 }
 @media (min-width: 992px) {
     .userblocks__toggle-secondary {
