@@ -362,16 +362,17 @@ var users = [{
                 case "outlook":
                     this.populateOptionsContainer(this.buildSectionOutlook()), this.initSectionOutlook()
             }
-            this.bindOptionsClose(), this.$optionsOpen.prop("disabled", !0), this.makeActive([this.$optionsContainer, this.$avatar, this.$currentOpenButton])
+            if (!this.$currentOpenButton.hasClass('unliked')) {
+                this.bindOptionsClose(), this.$optionsOpen.prop("disabled", !0), this.makeActive([this.$optionsContainer, this.$avatar, this.$currentOpenButton])
+            }
         },
         likeThis: function() {
-	        console.log(this.$currentOpenButton);
             if (!this.$currentOpenButton.hasClass("liked")) {
                 this.$currentOpenButton.addClass("liked").removeClass('unliked'), this.makeActivePerm();
                 var t = parseInt(this.$likeNumber.html()) + 1;
                 this.$likeNumber.html(t).addClass("grow-likes")
             } else {
-                this.$currentOpenButton.removeClass("liked active-perm active").addClass('unliked');
+                this.$currentOpenButton.removeClass("liked active").addClass('unliked');
                 var t = parseInt(this.$likeNumber.html()); //- 1;
                 this.$likeNumber.html(t).addClass("grow-likes")
 	            
