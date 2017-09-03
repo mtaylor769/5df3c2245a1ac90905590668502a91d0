@@ -126,7 +126,7 @@ var users = [{
             likes: ["Janice Camelo", "Steffanie Helbling", "Darcie Mcgurn", "Asia Germain", "Catrice Monnerjahn", "Mickey Mouse"]
         }
     }, {
-        name: "Dewet Duck",
+        name: "Dewey Duck",
         imgUrl: "./images/head_guy1.png",
         title: "Admiral",
         location: "Orlando, FL",
@@ -670,10 +670,10 @@ $(function() {
 
     }), $(".js__userblocks-header-rr").userblocksHeader({
         colorScheme: "primary",
-        title: "recent recognition",
+        title: "my recognition",
         filters: [{
             img: "recognition",
-            copy: "my recognition"
+            copy: ""
         }, {
             img: "location",
             copy: "my location"
@@ -724,7 +724,7 @@ $(function() {
 	  });
       $(".js__userblocks-swipe").swipe({
         swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-	      var $container = $(this).parent(), w = $container.width();
+          var $container = $(this).parent(), w = $container.width();
 	      if(direction == 'left') $container.animate({'right':w+'px'});
 	      else  $container.animate({'left':w+'px'});
         },
