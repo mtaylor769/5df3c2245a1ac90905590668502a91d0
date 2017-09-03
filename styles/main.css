@@ -7938,10 +7938,10 @@ body {
     display: -moz-box;
     display: -ms-flexbox;
     display: flex;
-    max-width: 970px
 }
 .userblocks>ul>li {
     height: 33%;
+    flex: 0 0 33%;
     width: 100%;
     -webkit-align-items: stretch;
     -moz-box-align: stretch;
@@ -7953,6 +7953,12 @@ body {
     -moz-box-ordinal-group: 5;
     -ms-flex-order: 4;
     order: 4
+}
+@media (min-width: 768px) {
+    .userblocks>ul>li {
+        height: 25%;
+        flex: 0 0 25%;
+    }
 }
 @media (min-width: 992px) {
     .userblocks {
@@ -9851,6 +9857,10 @@ only screen and (min-device-pixel-ratio: 1.5) {
 	background-image: url(../images/check_hover_solid.png);
 }
 @media (max-height: 640px) {
+	.userblocks>ul>li {
+		height: 50%;
+		flex: 0 0 50%
+	}
 	.userblocks__copy {
 		top: 0
 	}
