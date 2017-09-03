@@ -724,9 +724,11 @@ $(function() {
 	  });
       $(".js__userblocks-swipe").swipe({
         swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-          var $container = $(this).parent(), w = $container.width();
-	      if(direction == 'left') $container.animate({'right':w+'px'});
-	      else  $container.animate({'left':w+'px'});
+          // PDF-2: container math to prevent scrolling offscreen
+          var $container = $(this).parent(), w = $container.width(), off = $container.offset();
+          w = (direction == 'left') ? (w*-1) : w;
+          w = (w > off.left) ? 0 : w;
+          $container.animate({'left':w+'px'});
         },
         allowPageScroll: "vertical",
 		threshold:75
