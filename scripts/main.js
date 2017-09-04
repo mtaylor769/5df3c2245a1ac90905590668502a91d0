@@ -727,8 +727,11 @@ $(function() {
         swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
           // PDF-2: container math to prevent scrolling offscreen
           var $container = $(this).parent(), w = $container.width(), off = $container.offset();
+          var blocks = parseInt(parseInt($($container).children().length-1) * -w);
           w = (direction == 'left') ? (w*-1) : w;
-          w = (w > off.left) ? 0 : w;
+          w = (off.left>0) ? 0 : w + off.left;
+          w = (w>0) ? 0 : (w < blocks) ? blocks : w;
+          console.log({o:off, w:w, b:blocks})
           $container.animate({'left':w+'px'});
         },
         allowPageScroll: "vertical",
