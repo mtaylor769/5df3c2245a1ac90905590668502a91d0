@@ -7904,7 +7904,7 @@ body {
     -webkit-justify-content: space-between;
     -moz-box-pack: justify;
     -ms-flex-pack: justify;
-    justify-content: space-between;
+    justify-content: space-around;
     -webkit-align-self: stretch;
     -ms-flex-item-align: stretch;
     align-self: stretch;
@@ -7931,6 +7931,7 @@ body {
     -webkit-flex-flow: column wrap;
     -ms-flex-flow: column wrap;
     flex-flow: column wrap;
+    height: 100%;
 }
 .userblocks>ul,
 .userblocks>ul>li {
@@ -7940,8 +7941,7 @@ body {
     display: flex;
 }
 .userblocks>ul>li {
-    height: 33%;
-    flex: 0 0 33%;
+    flex: 0 0 20%;
     width: 100%;
     -webkit-align-items: stretch;
     -moz-box-align: stretch;
@@ -7960,6 +7960,13 @@ body {
         flex: 0 0 25%;
     }
 }
+@media (min-width: 768px) and (orientation: landscape) {
+    .userblocks>ul>li {
+        height: 25%;
+        flex: 0 0 25%;
+    }
+}
+ 
 @media (min-width: 992px) {
     .userblocks {
         display: -webkit-flex;
@@ -8049,8 +8056,7 @@ body {
 .userblocks__header-primary {
     width: 100%;
     height: 50px;
-    min-height: 50px;
-    padding: 10px 0 10px 15px;
+    padding: 10px 0;
     display: -webkit-flex;
     display: -moz-box;
     display: -ms-flexbox;
@@ -8069,8 +8075,7 @@ body {
     -ms-flex-align: center;
     align-items: center;
     background: #007fb6;
-    margin-bottom: 23px;
-    margin-top: 10px;
+    margin: 10px 0;
 }
 .userblocks__header-primary>div:first-child {
     text-transform: lowercase;
@@ -9142,7 +9147,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
     position: absolute;
     width: 0;
     top: 12px;
-    bottom: 12px;
+    height: 88%;
     right: 110px;
     overflow: hidden;
     transition: width .25s ease-in-out;
@@ -9870,9 +9875,10 @@ only screen and (min-device-pixel-ratio: 1.5) {
 }
 @media (max-height: 480px) and (max-width: 990px) {
 	.userblocks>ul {
-		height: 100%;
+		height: 80%;
 	   -webkit-flex-direction: row;
-	   flex-direction: row;
+       flex-direction: column;
+       flex-flow: column wrap;
 	}
 	.userblocks>ul>li {
 		height: 100%;
