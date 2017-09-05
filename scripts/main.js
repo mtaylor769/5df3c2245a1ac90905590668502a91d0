@@ -655,7 +655,7 @@ var isOpera = !!window.opera || navigator.userAgent.indexOf(" OPR/") >= 0,
 $(function() {
   $(".js__calendar").flatpickr({
     mode: "range",
-    dateFormat: "F d, Y",
+    dateFormat: "M. d, Y",
     onReady: function(dateObj, dateStr, instance) {
       var $cal = $(instance.calendarContainer);
       if ($cal.find('.flatpickr-append').length < 1) {
@@ -669,8 +669,27 @@ $(function() {
       }
     },
     onOpen: function(selectedDates, dateStr, instance) {
-      instance.clear();
+      console.log('open1');
+      instance.redraw();
+    },
+
+    onValueUpdate: function(selectedDates, dateStr, instance) {
+      console.log({
+        selectedDates,
+        dateStr,
+        instance,
+      })
+      instance.open();
+    },
+    onChange: function(selectedDates, dateStr, instance) {
+      console.log({
+        conf: instance.config,
+        selectedDates,
+        dateStr,
+        instance,
+      });
     }
+
 
   }), $(".js__userblocks-header-rr").userblocksHeader({
     colorScheme: "primary",
