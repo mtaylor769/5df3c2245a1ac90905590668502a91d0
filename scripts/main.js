@@ -203,6 +203,41 @@ var users = [{
       ecard: ["anniversary", "birthday", "congratulations", "thank you"],
       likes: ["Janice Camelo", "Steffanie Helbling", "Darcie Mcgurn", "Asia Germain", "Catrice Monnerjahn"]
     }
+  },{
+    name: "Minnie Mouse",
+    imgUrl: "./images/head_gal1.png",
+    title: "Senior Vice President",
+    location: "Philadelphia, PA",
+    award: "a job well done",
+    date: "2017-08-23T18:25:43.511Z",
+    actions: {
+      outlook: !0,
+      ecard: ["anniversary", "birthday", "congratulations", "thank you"],
+      likes: ["Janice Camelo", "Steffanie Helbling", "Darcie Mcgurn", "Asia Germain", "Catrice Monnerjahn"]
+    }
+  }, {
+    name: "Snow White",
+    imgUrl: "./images/head_gal2.png",
+    title: "Jr Developer",
+    location: "Seattle, WA",
+    award: "something noteable",
+    date: "2017-11-23T18:25:43.511Z",
+    actions: {
+      outlook: !0,
+      ecard: ["anniversary", "birthday", "congratulations", "thank you"],
+      likes: ["Janice Camelo", "Steffanie Helbling", "Darcie Mcgurn", "Asia Germain", "Catrice Monnerjahn"]
+    }
+  }, {
+    name: "Wellness Group!",
+    imgUrl: "./images/head_logo1.png",
+    location: "Port St. Lucie, FL",
+    award: "Signup starts...",
+    date: "2018-01-23T18:25:43.511Z",
+    actions: {
+      outlook: !0,
+      ecard: ["anniversary", "birthday", "congratulations", "thank you"],
+      likes: ["Janice Camelo", "Steffanie Helbling", "Darcie Mcgurn", "Asia Germain", "Catrice Monnerjahn"]
+    }
   }],
   _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(t) {
     return typeof t
@@ -696,7 +731,7 @@ $(function() {
     title: "my recognition",
     filters: [{
       img: "recognition",
-      copy: ""
+      copy: "my recognition"
     }, {
       img: "location",
       copy: "my location"
