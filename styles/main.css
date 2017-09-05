@@ -4534,7 +4534,7 @@ only screen and (min-width: 992px) and (min-device-pixel-ratio: 1.5) {
   background-repeat: no-repeat;
   background-position: 50%;
   transition: background .15s ease-in-out;
-  background-image: url(../images/unlike_rr_click.svg)
+  background-image: url(../images/icon-like.svg)
 }
 
 .icon__like-primary.active:not(.active-perm):hover:after {
