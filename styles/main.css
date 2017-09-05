@@ -8748,7 +8748,6 @@ body {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  height: 90%;
   overflow-y: scroll;
 }
 
@@ -10898,8 +10897,8 @@ only screen and (min-device-pixel-ratio: 1.5) {
   .userblocks>ul {
     height: 80%;
     -webkit-flex-direction: row;
-    flex-direction: column;
-    flex-flow: column wrap;
+    flex-direction: row;
+    /* flex-flow: row wrap; */
   }
   .userblocks>ul>li {
     height: 100%;
@@ -10917,7 +10916,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
 .js__userblocks-header-copy .close {
   position: absolute;
   right: -25px;
-  top: 0px;
+  top: 7px;
   height: 20px;
   width: 20px;
   background-size: contain;
@@ -10931,9 +10930,10 @@ only screen and (min-device-pixel-ratio: 1.5) {
   background-position: 50%;
   background-image: url(../images/bcrumb_x_rr.svg);
   cursor: pointer;
-  width: 20px;
-  height: 20px;
-  display: block
+  width: 15px;
+  height: 15px;
+  display: block;
+  background-size: contain;
 }
 
 .js__userblocks-header-ue .js__userblocks-header-copy .close:after {
