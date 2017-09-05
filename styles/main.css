@@ -188,9 +188,7 @@ html {
 .copy,
 .copy__firm,
 .copy__firm-primary {
-  font-family: Roboto;
   font-weight: 400;
-  font-style: normal;
   font-size: 1.8rem;
   line-height: 1.5;
   font-family: Roboto Condensed
@@ -201,9 +199,6 @@ html {
 }
 
 .copy__firm-secondary {
-  font-family: Roboto;
-  font-weight: 400;
-  font-style: normal;
   font-size: 1.8rem;
   line-height: 1.5;
   font-family: Roboto Condensed;
@@ -216,9 +211,7 @@ html {
 
 .copy__light,
 .copy__light-primary {
-  font-family: Roboto;
   font-weight: 300;
-  font-style: normal;
   font-size: 1.4rem;
   line-height: 1.5
 }
@@ -228,9 +221,7 @@ html {
 }
 
 .copy__light-secondary {
-  font-family: Roboto;
   font-weight: 300;
-  font-style: normal;
   font-size: 1.4rem;
   line-height: 1.5;
   color: #ffcb00
@@ -7818,9 +7809,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
   flex: 1;
   background: #fff;
   border: none;
-  font-family: Roboto;
   font-weight: 300;
-  font-style: normal;
   font-size: 1.4rem;
   line-height: 1.6rem;
   width: 0;
@@ -7864,9 +7853,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
   flex: 1;
   background: #fff;
   border: none;
-  font-family: Roboto;
   font-weight: 300;
-  font-style: normal;
   font-size: 1.4rem;
   line-height: 1.6rem;
   width: 0;
@@ -7904,9 +7891,6 @@ only screen and (min-device-pixel-ratio: 1.5) {
 .input__comment-secondary {
   background: #fff;
   border: 1px solid #e5e1e1;
-  font-family: Roboto;
-  font-weight: 400;
-  font-style: normal;
   font-size: 1.4rem;
   line-height: 1.8rem;
   padding: 10px;
@@ -7929,9 +7913,6 @@ only screen and (min-device-pixel-ratio: 1.5) {
 .input__comment-secondary {
   background: #fff;
   border: 1px solid #e5e1e1;
-  font-family: Roboto;
-  font-weight: 400;
-  font-style: normal;
   font-size: 1.4rem;
   line-height: 1.8rem;
   padding: 10px;
@@ -8571,9 +8552,6 @@ only screen and (min-device-pixel-ratio: 1.5) {
 }
 
 .calendar input[type=text] {
-  font-family: Roboto;
-  font-weight: 400;
-  font-style: normal;
   font-size: 1.2rem;
   line-height: 14px;
   color: #ba4500;
@@ -8684,9 +8662,7 @@ select::-ms-expand {
   border-radius: 0;
   margin-left: 10px;
   color: #ba4500;
-  font-family: Roboto;
   font-weight: 300;
-  font-style: normal;
   font-size: 1.2rem;
   line-height: 1.4rem;
   background: url(../images/icon-arrow-secondary.svg);
@@ -8709,6 +8685,9 @@ body {
   width: 100%;
   overflow-x: hidden;
   background: #fff;
+  font-weight: 300;
+  font-size: 2.4rem;
+  line-height: 1.5;
   display: -webkit-flex;
   display: -moz-box;
   display: -ms-flexbox;
@@ -8726,8 +8705,7 @@ body {
   display: none
 }
 
-.userblocks,
-.userblocks>ul {
+.userblocks {
   height: 100%;
   -moz-box-orient: vertical;
   -moz-box-direction: normal
@@ -8737,36 +8715,62 @@ body {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+
   -webkit-justify-content: center;
   -moz-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-items: center;
-  -moz-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+
+  -webkit-align-items: flex-start;
+  -moz-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+
+  -webkit-flex-flow: column;
+  -ms-flex-flow: column;
+  flex-flow: column;
+
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+
   overflow-y: scroll;
 }
 
-.userblocks>ul,
+
 .userblocks>ul>li {
+  flex: 0 0 100%;
+  width: 100%;
   display: -webkit-flex;
   display: -moz-box;
   display: -ms-flexbox;
   display: flex;
-}
-
-.userblocks>ul>li {
-  flex: 0 0 20%;
-  width: 100%;
   -webkit-align-items: stretch;
   -moz-box-align: stretch;
   -ms-flex-align: stretch;
   align-items: stretch;
 }
+
+@media (min-width: 668px) and (max-width: 736px) {
+    .userblocks>ul>li {
+      height: 210px;
+    }
+}
+@media (max-width: 667px) and (orientation: portrait) {
+    .userblocks>ul>li {
+      height: 300px;
+    }
+}
+@media (max-width: 562px) and (orientation: portrait) {
+    .userblocks>ul>li {
+      height: calc((100vh / 2) - 50px);
+    }
+}
+
 
 .userblocks.secondary>ul {
   -webkit-order: 4;
@@ -8777,15 +8781,7 @@ body {
 
 @media (min-width: 768px) {
   .userblocks>ul>li {
-    height: 25%;
-    flex: 0 0 25%;
-  }
-}
-
-@media (min-width: 768px) and (orientation: landscape) {
-  .userblocks>ul>li {
-    height: 25%;
-    flex: 0 0 25%;
+    height: 190px;
   }
 }
 
@@ -8881,8 +8877,7 @@ body {
 .userblocks__header-secondary {
   width: 100%;
   height: 50px;
-  margin: 10px 0;
-  padding: 10px 0 10px 10px;
+  padding: 15px 0 15px 15px;
   display: -webkit-flex;
   display: -moz-box;
   display: -ms-flexbox;
@@ -8901,19 +8896,16 @@ body {
   -ms-flex-align: center;
   align-items: center;
 }
+
 .userblocks__header-primary {  
   background: #007fb6;
+  margin: 10px 0;
 }
 
 .userblocks__header-primary>div:first-child {
   text-transform: lowercase;
   opacity: 1;
   transition: opacity .25s ease-in-out;
-  font-family: Roboto;
-  font-weight: 300;
-  font-style: normal;
-  font-size: 2.4rem;
-  line-height: 1.5;
   color: #38C1FB
 }
 
@@ -8940,11 +8932,8 @@ body {
 }
 
 @media (min-width: 992px) {
-  .userblocks__header-primary>div:first-child {
-    font-family: Roboto;
-    font-weight: 300;
-    font-style: normal;
-    font-size: 2.4rem;
+  .userblocks__header-primary>div:first-child,
+  .userblocks__header-secondary>div:first-child {
     line-height: 3rem
   }
 }
@@ -9073,18 +9062,11 @@ body {
   text-transform: lowercase;
   opacity: 1;
   transition: opacity .25s ease-in-out;
-  font-family: Roboto;
-  font-weight: 300;
-  font-style: normal;
-  line-height: 1.5;
   color: #ec5901
 }
 
 @media (min-width: 992px) {
   .userblocks__header-secondary>div:first-child {
-    font-family: Roboto;
-    font-weight: 300;
-    font-style: normal;
     font-size: 2.4rem;
     line-height: 3rem
   }
@@ -9429,9 +9411,6 @@ body {
 }
 
 .userblocks__quickactions-primary>button+div>button div:last-child {
-  font-family: Roboto;
-  font-weight: 400;
-  font-style: normal;
   font-size: 1.4rem;
   line-height: 2.2rem;
   overflow-x: hidden;
@@ -9506,9 +9485,6 @@ body {
 }
 
 .userblocks__quickactions-secondary>button+div>button div:last-child {
-  font-family: Roboto;
-  font-weight: 400;
-  font-style: normal;
   font-size: 1.4rem;
   line-height: 2.2rem;
   overflow-x: hidden;
@@ -9601,10 +9577,7 @@ body {
 .userblocks__copy {
   top: 15px;
   padding: 0 15px 0 20px;
-  -webkit-flex: 1;
-  -moz-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1
+  min-width:33%;
 }
 
 .userblocks__options-primary {
@@ -9890,26 +9863,19 @@ body {
 }
 
 .userblocks__tag-primary>div>div:first-child {
-  font-family: Roboto;
-  font-weight: 400;
-  font-style: normal;
   font-size: 1.8rem;
   line-height: 2.2rem
 }
 
 .userblocks__tag-primary>div>div:nth-child(2) {
-  font-family: Roboto;
   font-weight: 300;
-  font-style: normal;
   font-size: 3.6rem;
   line-height: 4rem;
   font-family: Roboto Condensed
 }
 
 .userblocks__tag-primary>div>div:nth-child(3) {
-  font-family: Roboto;
   font-weight: 300;
-  font-style: normal;
   font-size: 1.47rem;
   line-height: 2.2rem
 }
@@ -9943,46 +9909,32 @@ body {
 }
 
 .userblocks__tag-secondary>div>div:first-child {
-  font-family: Roboto;
-  font-weight: 400;
-  font-style: normal;
   font-size: 1.8rem;
   line-height: 2.2rem
 }
 
 .userblocks__tag-secondary>div>div:nth-child(2) {
-  font-family: Roboto;
   font-weight: 300;
-  font-style: normal;
   font-size: 3.6rem;
   line-height: 4rem;
   font-family: Roboto Condensed
 }
 
 .userblocks__tag-secondary>div>div:nth-child(3) {
-  font-family: Roboto;
   font-weight: 300;
-  font-style: normal;
   font-size: 1.47rem;
   line-height: 2.2rem
 }
 
 .userblocks__toggle-primary {
-  width: 100%;
-  background: #007fb6;
-  font-family: Roboto;
-  font-weight: 300;
-  font-style: normal;
-  font-size: 1.8rem;
-  line-height: 1.5;
-  color: #38c1fb;
-  height: 30px;
-  min-height: 30px;
-  -webkit-order: 1;
-  -moz-box-ordinal-group: 2;
-  -ms-flex-order: 1;
-  order: 1;
-  margin-bottom: 10px
+    width: 100%;
+    font-weight: 300;
+    font-size: 1.8rem;
+    line-height: 1.5;
+    min-height: 35px;
+    background: #007fb6;
+    color: #38c1fb;
+    margin-bottom: 10px
 }
 
 @media (min-width: 992px) {
@@ -9994,9 +9946,7 @@ body {
 .userblocks__toggle-secondary {
   width: 100%;
   background: #ffcb00;
-  font-family: Roboto;
   font-weight: 300;
-  font-style: normal;
   font-size: 1.8rem;
   line-height: 1.5;
   color: #ec5901;
@@ -10129,9 +10079,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
 
 .options__header-primary,
 .options__header-primary p {
-  font-family: Roboto;
   font-weight: 300;
-  font-style: normal;
   color: #38c1fb
 }
 
@@ -10265,9 +10213,6 @@ only screen and (min-device-pixel-ratio: 1.5) {
 
 .options__header-secondary,
 .options__header-secondary p {
-  font-family: Roboto;
-  font-weight: 300;
-  font-style: normal;
   color: #ff9600
 }
 
@@ -10548,11 +10493,6 @@ only screen and (min-device-pixel-ratio: 1.5) {
 }
 
 .options__body-cards-primary button div:last-child {
-  font-family: Roboto;
-  font-weight: 300;
-  font-style: normal;
-  font-size: 1.2rem;
-  line-height: 1.5;
   color: #38c1fb
 }
 
@@ -10657,11 +10597,6 @@ only screen and (min-device-pixel-ratio: 1.5) {
 }
 
 .options__body-cards-secondary button div:last-child {
-  font-family: Roboto;
-  font-weight: 300;
-  font-style: normal;
-  font-size: 1.2rem;
-  line-height: 1.5;
   color: #ec5901
 }
 
@@ -10689,9 +10624,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
   -ms-flex-align: center;
   align-items: center;
   padding: 20px 65px 20px 20px;
-  font-family: Roboto;
   font-weight: 300;
-  font-style: normal;
   font-size: 1.6rem;
   line-height: 2.4rem
 }
@@ -10747,9 +10680,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
 
 .options__body-read>div>div {
   width: 50%;
-  font-family: Roboto;
   font-weight: 700;
-  font-style: normal;
   font-size: 1.4rem;
   line-height: 1.5;
   color: #007fb6
@@ -10880,31 +10811,6 @@ only screen and (min-device-pixel-ratio: 1.5) {
   background-image: url(../images/check_hover_solid.png);
 }
 
-@media (max-height: 640px) {
-  .userblocks>ul>li {
-    height: 50%;
-    flex: 0 0 50%
-  }
-  .userblocks__copy {
-    top: 0
-  }
-  .options__body-cards-primary button div:last-child {
-    font-size: 0
-  }
-}
-
-@media (max-height: 480px) and (max-width: 990px) {
-  .userblocks>ul {
-    height: 80%;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    /* flex-flow: row wrap; */
-  }
-  .userblocks>ul>li {
-    height: 100%;
-    flex: 0 0 100%
-  }
-}
 
 .congrats {
   display: block;
