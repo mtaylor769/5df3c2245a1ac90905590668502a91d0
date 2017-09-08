@@ -780,7 +780,7 @@ $(function() {
   $(".js__userblocks-header-copy .close").on("click", function() {
     $(this).parent().hide();
   });
-  /*
+  
   $(".js__userblocks-swipe").swipe({
     swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
       // PDF-2: container math to prevent scrolling offscreen
@@ -803,5 +803,4 @@ $(function() {
     allowPageScroll: "vertical",
     threshold: 75
   });
-  */
 });
