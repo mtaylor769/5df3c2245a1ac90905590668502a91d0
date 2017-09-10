@@ -4,7 +4,7 @@ var users = [{
     imgUrl: "./images/head_gal1.png",
     title: "Senior Vice President",
     location: "Philadelphia, PA",
-    award: "a job well done",
+    award: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis laoreet ligula. Vestibulum in luctus purus, in scelerisque elit.",
     date: "2016-04-23T18:25:43.511Z",
     actions: {
       comments: [{
