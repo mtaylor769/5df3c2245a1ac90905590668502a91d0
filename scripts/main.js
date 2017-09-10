@@ -488,7 +488,7 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
     },
     buildTitle: function() {
       return '<div class="userblocks__header-title">\
-                <span>' + this.options.title + '&nbsp;</span>\
+                <span class="header-title">' + this.options.title + '&nbsp;</span>\
                 <div class="header-copy js__userblocks-header-copy">\
                   <section class="calendar" style="display:none"> \
                     <form><input type="text" class="js__calendar" readonly="readonly" placeholder="Select date range...">\
@@ -562,14 +562,12 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
     },
     switchHeaderCopy: function(currentHeaderCopy) {
       if ("select dates" === this.currentHeaderCopy) {
-         $('.calendar').show(), $('.selected-filter').hide(), this.$headerCopyContainer.css({
-          display: "inline-block"
-        });
+         $('.calendar').show(), $('.selected-filter').hide(), this.$headerCopyContainer.css({display: "inline-block"}), this.$headerCopyContainer.parent().css({top: "3px"});
       } else {
         $('.calendar').hide(), $('.selected-filter').show(),
-        "recent recognition" !== this.currentHeaderCopy && "view all" !== this.currentHeaderCopy ? (this.$headerCopySpan.text(this.currentHeaderCopy), this.$headerCopyContainer.css({
-          display: "inline-block"
-        })) : this.$headerCopyContainer.hide()
+          "recent recognition" !== this.currentHeaderCopy && "view all" !== this.currentHeaderCopy 
+          ? (this.$headerCopySpan.text(this.currentHeaderCopy), this.$headerCopyContainer.css({display: "inline-block"}), this.$headerCopyContainer.parent().css({top: "0"})) 
+          : this.$headerCopyContainer.hide()
       }
     },
     toggleIconActive: function() {

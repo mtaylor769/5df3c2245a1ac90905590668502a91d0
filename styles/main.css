@@ -8616,7 +8616,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
 
 .calendar {
   padding: 0;
-  top: 3px;
+  top: -1px;
   -webkit-order: 3;
   -moz-box-ordinal-group: 4;
   -ms-flex-order: 3;
@@ -9028,9 +9028,6 @@ body {
 .userblocks__header-secondary .header-copy span:nth-of-type(2),
 .userblocks__header-secondary .userblocks__header-title span {
   color: #F26F00;
-}
-.userblocks__header-secondary .userblocks__header-title span {
-  top: 0px;
 }
 @media (min-width: 992px) {
   .userblocks__header-primary>div:first-child,
@@ -10924,7 +10921,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
 .js__userblocks-header-copy .close {
   position: absolute;
   right: -25px;
-  top: 12px;
+  top: 9px;
   height: 20px;
   width: 20px;
   background-size: contain;
