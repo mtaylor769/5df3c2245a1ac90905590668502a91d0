@@ -547,7 +547,7 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
       this.$currentChoice = t(e.currentTarget), this.$currentIcon = this.$currentChoice.find("div"), this.currentHeaderCopy = this.$currentChoice.find("div").text(), this.toggleIconActive(), this.showChoiceText(), this.delay("closeHeader", 1), this.delay("hideChoiceText", 1.2), /*this.delay("toggleIconActive", 1.2),*/ this.switchHeaderCopy()
     },
     switchHeaderCopy: function(currentHeaderCopy) {
-      "" !== this.currentHeaderCopy && "view all" !== this.currentHeaderCopy ? (this.$headerCopySpan.text(this.currentHeaderCopy), this.$headerCopyContainer.css({
+      "recent recognition" !== this.currentHeaderCopy && "view all" !== this.currentHeaderCopy ? (this.$headerCopySpan.text(this.currentHeaderCopy), this.$headerCopyContainer.css({
         display: "inline-block"
       })) : this.$headerCopyContainer.hide()
     },
@@ -578,7 +578,7 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
       swipeTargets: "js__userblocks-swipe",
       swipeWidthStart: 992,
       icons: {}
-    }, this.$body = t(i), this.options = t.extend({}, this.defaults, e), this.current = {}, this.icons = this.options.icons, this.options.toggleCopy = "primary" == this.options.colorScheme ? "upcoming events" : "my recognition", this.options.toggleColor = "primary" == this.options.colorScheme ? "secondary" : "primary", this.build()
+    }, this.$body = t(i), this.options = t.extend({}, this.defaults, e), this.current = {}, this.icons = this.options.icons, this.options.toggleCopy = "primary" == this.options.colorScheme ? "upcoming events" : "recent recognition", this.options.toggleColor = "primary" == this.options.colorScheme ? "secondary" : "primary", this.build()
   };
   i.prototype = {
     constructor: i,
@@ -701,7 +701,7 @@ $(function() {
         $cal.find('.flatpickr-check').on('click', function() {
           instance.close();
         });
-      }
+      }  
     },
     onOpen: function(selectedDates, dateStr, instance) {
       console.log('open1');
@@ -728,10 +728,10 @@ $(function() {
 
   }), $(".js__userblocks-header-rr").userblocksHeader({
     colorScheme: "primary",
-    title: "my recognition",
+    title: "recent recognition",
     filters: [{
       img: "recognition",
-      copy: "my recognition"
+      copy: "recent recognition"
     }, {
       img: "location",
       copy: "my location"
@@ -779,6 +779,7 @@ $(function() {
 $(function() {
   $(".js__userblocks-header-copy .close").on("click", function() {
     $(this).parent().hide();
+    $('.js__choices div').removeClass('active');
   });
   
   $(".js__userblocks-swipe").swipe({

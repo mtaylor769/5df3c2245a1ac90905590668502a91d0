@@ -8883,6 +8883,7 @@ body {
 .userblocks__header-secondary {
   width: 100%;
   height: 50px;
+  max-height: 50px;
   padding: 15px 0 15px 15px;
   display: -webkit-flex;
   display: -moz-box;
@@ -8916,12 +8917,12 @@ body {
 }
 
 .userblocks__header-primary .header-copy span:nth-of-type(1) {
-  color: #005A81
+  color: #38C1FB
 }
 
 .userblocks__header-primary .header-copy span:nth-of-type(2),
 .userblocks__header-primary .userblocks__header-title span {
-  color: #38C1FB
+  color: #38C1FB;
 }
 
 .userblocks__header-primary>div:first-child {
@@ -8947,7 +8948,8 @@ body {
 @media (max-width: 991px) {
   .userblocks__header-primary>div:first-child,
   .userblocks__header-secondary>div:first-child {
-    font-size: 1.8rem;
+    font-size: 2.0rem;
+    padding-bottom: 5px;
   }
   .userblocks__header-search-primary.active form,
   .userblocks__header-search-secondary.active form {
@@ -10828,7 +10830,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
 .js__userblocks-header-copy .close {
   position: absolute;
   right: -25px;
-  top: 7px;
+  top: 10px;
   height: 20px;
   width: 20px;
   background-size: contain;
