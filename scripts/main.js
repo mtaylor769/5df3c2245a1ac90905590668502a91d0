@@ -487,7 +487,21 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
       this.$header.html(this.buildTitle() + this.buildOptionsGroup()).addClass("userblocks__header-" + this.options.colorScheme)
     },
     buildTitle: function() {
-      return '<div class="userblocks__header-title">            <span>' + this.options.title + '&nbsp;</span>            <div class="header-copy js__userblocks-header-copy">              <span>|&nbsp;</span>              <span></span><div class="close"></div>            </div>          </div>'
+      return '<div class="userblocks__header-title">\
+                <span>' + this.options.title + '&nbsp;</span>\
+                <div class="header-copy js__userblocks-header-copy">\
+                  <section class="calendar" style="display:none"> \
+                    <form><input type="text" class="js__calendar" readonly="readonly" placeholder="Select date range...">\
+                      <label\
+                        for="js__calendar-reset"><input type="reset" value="reset" id="js__calendar-reset"></label>\
+                    </form>\
+                  </section>\
+                  <section class="selected-filter"> \
+                    <span>|&nbsp;</span>\
+                    <span></span><div class="close"></div>\
+                  </section>\
+                </div>\
+              </div>'
     },
     buildOptionsGroup: function() {
       return '<div class="userblocks__header-choices">' + this.buildSearch() + this.buildOptions() + "</div>"
@@ -547,9 +561,16 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
       this.$currentChoice = t(e.currentTarget), this.$currentIcon = this.$currentChoice.find("div"), this.currentHeaderCopy = this.$currentChoice.find("div").text(), this.toggleIconActive(), this.showChoiceText(), this.delay("closeHeader", 1), this.delay("hideChoiceText", 1.2), /*this.delay("toggleIconActive", 1.2),*/ this.switchHeaderCopy()
     },
     switchHeaderCopy: function(currentHeaderCopy) {
-      "recent recognition" !== this.currentHeaderCopy && "view all" !== this.currentHeaderCopy ? (this.$headerCopySpan.text(this.currentHeaderCopy), this.$headerCopyContainer.css({
-        display: "inline-block"
-      })) : this.$headerCopyContainer.hide()
+      if ("select dates" === this.currentHeaderCopy) {
+         $('.calendar').show(), $('.selected-filter').hide(), this.$headerCopyContainer.css({
+          display: "inline-block"
+        });
+      } else {
+        $('.calendar').hide(), $('.selected-filter').show(),
+        "recent recognition" !== this.currentHeaderCopy && "view all" !== this.currentHeaderCopy ? (this.$headerCopySpan.text(this.currentHeaderCopy), this.$headerCopyContainer.css({
+          display: "inline-block"
+        })) : this.$headerCopyContainer.hide()
+      }
     },
     toggleIconActive: function() {
       $('.js__choices div').removeClass('active');
@@ -750,14 +771,8 @@ $(function() {
     colorScheme: "secondary",
     title: "upcoming events",
     filters: [{
-      img: "company-secondary",
-      copy: "company"
-    }, {
-      img: "anniversary-secondary",
-      copy: "anniversary"
-    }, {
-      img: "birthday-secondary",
-      copy: "birthday"
+      img: "calendar-range-secondary",
+      copy: "select dates"
     }, {
       img: "location-secondary",
       copy: "my location"

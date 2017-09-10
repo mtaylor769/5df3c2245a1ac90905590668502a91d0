@@ -6766,6 +6766,97 @@ only screen and (min-device-pixel-ratio: 1.5) {
   }
 }
 
+.icon__calendar-range-secondary:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transition: background .15s ease-in-out;
+  background-image: url(../images/icon-calendar-range-secondary.svg)
+}
+
+.no-svg .icon__calendar-range-secondary:after {
+  background-image: url(../images/icon-calendar-range-secondary.png)
+}
+
+.userblocks__quickactions-secondary>button+div>button:hover .icon__calendar-range-secondary:after {
+  background-image: url(../images/icon-calendar-range-active.svg)
+}
+
+.no-svg .userblocks__quickactions-secondary>button+div>button:hover .icon__calendar-range-secondary:after {
+  background-image: url(../images/icon-calendar-range-active.png)
+}
+
+@media only screen and (-moz-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (min-device-pixel-ratio: 1.5) {
+  .no-svg .icon__calendar-range-secondary:after {
+    background-image: url(../images/icon-calendar-range-secondary@2x.png)
+  }
+}
+
+@media (min-width: 992px) {
+  .icon__calendar-range-secondary.active-perm:after,
+  .icon__calendar-range-secondary:active:after,
+  .icon__calendar-range-secondary:hover:after {
+    transition: background .15s ease-in-out;
+    background-image: url(../images/icon-calendar-range-active.svg)
+  }
+  .no-svg .icon__calendar-range-secondary.active-perm:after,
+  .no-svg .icon__calendar-range-secondary:active:after,
+  .no-svg .icon__calendar-range-secondary:hover:after {
+    background-image: url(../images/icon-calendar-range-active.png)
+  }
+}
+
+@media only screen and (min-width: 992px) and (-moz-min-device-pixel-ratio: 1.5),
+only screen and (min-width: 992px) and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min-width: 992px) and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (min-width: 992px) and (min-device-pixel-ratio: 1.5) {
+  .no-svg .icon__calendar-range-secondary.active-perm:after,
+  .no-svg .icon__calendar-range-secondary:active:after,
+  .no-svg .icon__calendar-range-secondary:hover:after {
+    background-image: url(../images/icon-calendar-range-active@2x.png)
+  }
+}
+
+.icon__calendar-range-secondary.active-perm:after,
+.icon__calendar-range-secondary.active:after,
+.icon__calendar-range-secondary:focus:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transition: background .15s ease-in-out;
+  background-image: url(../images/icon-calendar-range-secondary.svg)
+}
+
+.no-svg .icon__calendar-range-secondary.active-perm:after,
+.no-svg .icon__calendar-range-secondary.active:after,
+.no-svg .icon__calendar-range-secondary:focus:after {
+  background-image: url(../images/icon-calendar-range-secondary.png)
+}
+
+@media only screen and (-moz-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (min-device-pixel-ratio: 1.5) {
+  .no-svg .icon__calendar-range-secondary.active-perm:after,
+  .no-svg .icon__calendar-range-secondary.active:after,
+  .no-svg .icon__calendar-range-secondary:focus:after {
+    background-image: url(../images/icon-calendar-range-secondary@2x.png)
+  }
+}
+
 .icon__anniversary {
   position: relative
 }
@@ -8524,7 +8615,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
 }
 
 .calendar {
-  padding: 10px 0 0;
+  padding: 8px 0 0;
   -webkit-order: 3;
   -moz-box-ordinal-group: 4;
   -ms-flex-order: 3;
@@ -8559,7 +8650,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
   min-width: 225px;
   background: #fff;
   border: 1px solid #ebe8e8;
-  margin-right: 15px
+  margin-right: 5px
 }
 
 .calendar input[type=text]::-webkit-input-placeholder {
@@ -8596,21 +8687,21 @@ only screen and (min-device-pixel-ratio: 1.5) {
   background-size: contain;
   background-position: 50%;
   background-repeat: no-repeat;
-  background-image: url(../images/upperx_grey_active_outline.svg);
+  background-image: url(../images/upperx_active_outline.svg);
   background-size: 14px;
   transition: all .25s ease-in-out
 }
 
 .no-svg .calendar label:after {
-  background-image: url(../images/upperx_grey_active_outline.png)
+  background-image: url(../images/upperx_active_outline.png)
 }
 
 .calendar label:hover:after {
-  background-image: url(../images/upperx_grey_hover_solid.svg);
+  background-image: url(../images/upperx_hover_solid.svg);
 }
 
 .no-svg .calendar label:hover:after {
-  background-image: url(../images/upperx_grey_hover_solid.png)
+  background-image: url(../images/upperx_hover_solid.png)
 }
 
 @media only screen and (-moz-min-device-pixel-ratio: 1.5),
@@ -8930,18 +9021,20 @@ body {
 }
 
 .userblocks__header-secondary .header-copy span:nth-of-type(1) {
-  color: #FFE066
+  color: #F26F00
 }
 
 .userblocks__header-secondary .header-copy span:nth-of-type(2),
 .userblocks__header-secondary .userblocks__header-title span {
-  color: #F26F00
+  color: #F26F00;
+  top: 2px;
 }
 
 @media (min-width: 992px) {
   .userblocks__header-primary>div:first-child,
   .userblocks__header-secondary>div:first-child {
-    line-height: 3rem
+    font-size: 2.0rem;
+    padding-bottom: 5px;
   }
 }
 
@@ -9075,8 +9168,8 @@ body {
 
 @media (min-width: 992px) {
   .userblocks__header-secondary>div:first-child {
-    font-size: 2.4rem;
-    line-height: 3rem
+    font-size: 2.0rem;
+    padding-bottom: 8px
   }
 }
 
@@ -10830,7 +10923,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
 .js__userblocks-header-copy .close {
   position: absolute;
   right: -25px;
-  top: 10px;
+  top: 12px;
   height: 20px;
   width: 20px;
   background-size: contain;
