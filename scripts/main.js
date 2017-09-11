@@ -490,12 +490,6 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
       return '<div class="userblocks__header-title">\
                 <span class="header-title">' + this.options.title + '&nbsp;</span>\
                 <div class="header-copy js__userblocks-header-copy">\
-                  <section class="calendar" style="display:none"> \
-                    <form><input type="text" class="js__calendar" readonly="readonly" placeholder="Select date range...">\
-                      <label\
-                        for="js__calendar-reset"><input type="reset" value="reset" id="js__calendar-reset"></label>\
-                    </form>\
-                  </section>\
                   <section class="selected-filter"> \
                     <span>|&nbsp;</span>\
                     <span></span><div class="close"></div>\
@@ -504,19 +498,38 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
               </div>'
     },
     buildOptionsGroup: function() {
-      return '<div class="userblocks__header-choices">' + this.buildSearch() + this.buildOptions() + "</div>"
+      return  '<div class="userblocks__header-choices">' + ((this.options.colorScheme === 'secondary') ? this.buildDatePicker() : "") + this.buildOptions() + this.buildSearch() + "</div>"
     },
     buildSearch: function() {
       return '<div class="userblocks__header-search-' + this.options.colorScheme + ' js__search-box">          <form>            <button class="btn__md icon__search-' + this.options.colorScheme + ' js__submit-search js__close-search" type="submit"></button>            <input type="search" class="input__search-' + this.options.colorScheme + ' js__search-input" name="js__userblocks-search" placeholder="' + this.options.searchPlaceholderCopy + '"/>          </form>          <button class="btn__md icon__search-' + this.options.colorScheme + ' js__open-search" type="button"></button>        </div>'
     },
     buildOptions: function() {
-      if (this.options.filters) return '<div class="userblocks__quickactions-' + this.options.colorScheme + ' js__userblocks-choice-container">                <button type="button" class="btn__md icon__filter-' + this.options.colorScheme + ' js__open-header"></button>                <div class="group__inline-pipe-' + this.options.colorScheme + '">' + this.buildOptionsList() + "</div>            </div>"
+      if (this.options.filters) 
+        return '<div class="userblocks__quickactions-' + this.options.colorScheme + ' js__userblocks-choice-container">\
+                  <button type="button" class="btn__md icon__filter-' + this.options.colorScheme + ' js__open-header"></button>\
+                  <div class="group__inline-pipe-' + this.options.colorScheme + '">' + this.buildOptionsList() + '</div>\
+                </div>';
+    },
+    buildDatePicker: function() {
+      return '<div class="userblocks__calendar-range-' + this.options.colorScheme + ' js__date-box">\
+                <button class="btn__md icon__calendar-range-' + this.options.colorScheme + ' js__close-calendar-range" type="submit"></button>\
+                <div>\
+                  <section class="calendar" style="display:none"> \
+                    <form><input type="text" class="js__calendar" readonly="readonly" placeholder="Select date range...">\
+                      <label for="js__calendar-reset"><input type="reset" value="reset" id="js__calendar-reset"></label>\
+                    </form>\
+                  </section>\
+                </div>\
+              </div>';
     },
     buildOptionsList: function() {
       var t = this.options.filters.map(function(t, i) {
-        return '<button type="button" class="btn__md js__choices">              <div class="icon__' + t.img + '"></div>              <div>' + t.copy + "</div>            </button>"
+        return '<button type="button" class="btn__md js__choices">\
+                  <div class="icon__' + t.img + '"></div>\
+                  <div>' + t.copy + '</div>\
+                </button>'
       }).join("");
-      return t = '<button class="btn__md icon__search-' + this.options.colorScheme + ' js__open-search" type="button"></button>' + t
+      return t;
     },
     detectMobile: function() {
       return /Mobi/i.test(navigator.userAgent) || /Android/i.test(navigator.userAgent)
@@ -562,7 +575,8 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
     },
     switchHeaderCopy: function(currentHeaderCopy) {
       if ("select dates" === this.currentHeaderCopy) {
-         $('.calendar').show(), $('.selected-filter').hide(), this.$headerCopyContainer.css({display: "inline-block"}), this.$headerCopyContainer.parent().css({top: "3px"});
+         return '';
+         //$('.calendar').show(), $('.selected-filter').hide(), this.$headerCopyContainer.css({display: "inline-block"}), this.$headerCopyContainer.parent().css({top: "3px"});
       } else {
         $('.calendar').hide(), $('.selected-filter').show(),
           "recent recognition" !== this.currentHeaderCopy && "view all" !== this.currentHeaderCopy 
@@ -769,9 +783,6 @@ $(function() {
     colorScheme: "secondary",
     title: "upcoming events",
     filters: [{
-      img: "calendar-range-secondary",
-      copy: "select dates"
-    }, {
       img: "location-secondary",
       copy: "my location"
     }, {

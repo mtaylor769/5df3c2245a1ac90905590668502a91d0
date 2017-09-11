@@ -2111,6 +2111,28 @@ html {
   width: 85px;
 }
 
+.icon__calendar-range {
+  position: relative;
+}
+
+.icon__calendar-range:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transition: background .15s ease-in-out;
+  background-image: url(../images/icon-calendar-range.svg);
+}
+
+.no-svg .icon__calendar-range:after {
+  background-image: url(../images/icon-calendar-range.png);
+}
+
+
 .icon__filter {
   position: relative;
 }
@@ -9284,7 +9306,8 @@ body {
 }
 
 .userblocks__header-choices,
-.userblocks__header-search-primary {
+.userblocks__header-search-primary,
+.userblocks__calendar-range-secondary {
   display: -webkit-flex;
   display: -moz-box;
   display: -ms-flexbox;
@@ -9304,8 +9327,8 @@ body {
   align-items: center;
 }
 
-.userblocks__header-search-primary {
-  border-right: 1px solid #0b2d71;
+.userblocks__header-search-primary,
+.userblocks__calendar-range-secondary {
   padding-right: 15px;
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
@@ -9345,7 +9368,7 @@ body {
   transition: width .25s ease-in-out;
 }
 
-@media (min-width: 1475px);
+@media (min-width: 1475px)
 /*and (max-width: 1199px)*/
 
 {
@@ -9420,7 +9443,6 @@ body {
   flex-direction: row;
   -ms-flex-pack: end;
   -ms-flex-align: center;
-  border-right: 1px solid #ba4500;
   padding-right: 15px;
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
@@ -9480,6 +9502,7 @@ body {
   top: -1px;
   right: 5px;
   background: #007fb6;
+  border-right: 1px solid #0b2d71;
   transition: max-width .25s ease-in-out;
 }
 
@@ -9542,7 +9565,8 @@ body {
   transition: max-width .25s ease-in-out;
 }
 
-.userblocks__quickactions-secondary {
+.userblocks__quickactions-secondary,
+.userblocks__calendar-range-secondary {
   padding: 0 15px;
 }
 
@@ -9554,6 +9578,7 @@ body {
   top: -1px;
   right: 5px;
   background: #ffcb00;
+  border-right: 1px solid #fff;
   transition: max-width .25s ease-in-out;
 }
 
@@ -9616,11 +9641,17 @@ body {
   transition: max-width .25s ease-in-out;
 }
 
+.userblocks__calendar-range-secondary  {
+  border-right: 1px solid #fff;
+  right: -5px;
+  padding-right: 5px;
+}  
+
 .userblocks__container>li:not(:last-child) {
   border-bottom: 2px solid #f9f4f4;
 }
 .userblocks__container {
-  margin: 15px 0;
+  margin-left: 15px;
 }  
 .userblocks__container.secondary {
   -webkit-order: 3;
