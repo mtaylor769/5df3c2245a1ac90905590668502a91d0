@@ -9656,7 +9656,7 @@ body {
 .js__calendar-range-container {
   position: absolute;
   top: 0px;
-  right: 35px;
+  right: 40px;
   z-index: 3;
   width: auto;
   height: 350px;
@@ -9668,7 +9668,7 @@ body {
 .js__calendar-range-container .flatpickr-calendar {
   position: absolute;
   right: -75px;
-  top: 35px;
+  top: 37px;
 }
 
 .userblocks__container>li:not(:last-child) {

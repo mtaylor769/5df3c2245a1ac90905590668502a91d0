@@ -613,7 +613,7 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
       $cal.show();
     },
     closeDatePicker: function() {
-      this.$calendar.hide();
+      this.makeInactive(this.$calendar.parent())
     },
     delay: function(t, i) {
       var e = this;
@@ -628,7 +628,7 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
       this.$currentChoice.removeClass("active")
     },
     openHeader: function(t, i) {
-      this.toggleCalendar(), this.doneSearching(), this.makeActive(this.$choiceContainer), this.makeActive(this.$header)
+      this.closeDatePicker(), this.doneSearching(), this.makeActive(this.$choiceContainer), this.makeActive(this.$header)
     },
     closeHeader: function() {
       this.makeInactive(this.$choiceContainer), this.makeInactive(this.$header)
