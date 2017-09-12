@@ -9388,7 +9388,8 @@ body {
 @media (min-width: 1200px) and (max-width: 1383px) {
   .userblocks__header-search-primary.active form,
   .userblocks__header-search-secondary.active form {
-    width: calc(48vw - 75px);
+    width: calc(40vw - 75px);
+    right: 120px;
   }
 }
 
@@ -10926,7 +10927,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
 .flatpickr-append .flatpickr-check {
   font-size: 0;
   display: inline-block;
-  width: 50%;
+  width: 49%;
   height: 36px;
 }
 
