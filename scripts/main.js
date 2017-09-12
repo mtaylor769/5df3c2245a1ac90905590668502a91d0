@@ -1,4 +1,14 @@
 "use strict";
+var isOpera = !!window.opera || navigator.userAgent.indexOf(" OPR/") >= 0,
+isFirefox = "undefined" != typeof InstallTrigger,
+isSafari = /constructor/i.test(window.HTMLElement) || function(t) {
+  return "[object SafariRemoteNotification]" === t.toString()
+}(!window.safari || safari.pushNotification),
+isIE = !!document.documentMode,
+isEdge = !isIE && !!window.StyleMedia,
+isChrome = !!window.chrome && !!window.chrome.webstore,
+isBlink = (isChrome || isOpera) && !!window.CSS,
+isMobile = /Mobi/i.test(navigator.userAgent) || /Android/i.test(navigator.userAgent);
 var users = [{
     name: "Glynis Proby",
     imgUrl: "./images/head_gal1.png",
@@ -783,16 +793,6 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
     }
   }
 }(jQuery);
-var isOpera = !!window.opera || navigator.userAgent.indexOf(" OPR/") >= 0,
-  isFirefox = "undefined" != typeof InstallTrigger,
-  isSafari = /constructor/i.test(window.HTMLElement) || function(t) {
-    return "[object SafariRemoteNotification]" === t.toString()
-  }(!window.safari || safari.pushNotification),
-  isIE = !!document.documentMode,
-  isEdge = !isIE && !!window.StyleMedia,
-  isChrome = !!window.chrome && !!window.chrome.webstore,
-  isBlink = (isChrome || isOpera) && !!window.CSS,
-  isMobile = /Mobi/i.test(navigator.userAgent) || /Android/i.test(navigator.userAgent);
 
 !function() {
   /*
