@@ -549,52 +549,6 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
   };
   i.prototype = {
     constructor: i,
-    flatpickr_options: {
-      mode: "range",
-      dateFormat: "M. d, Y",
-      inline: true,
-      onReady: function(selectedDates, dateStr, instance) {
-        var $cal = $(instance.calendarContainer);
-        //$cal.append($('.flatpickr-calendar'));
-        if ($cal.find('.flatpickr-append').length < 1) {
-          $cal.append('<div class="flatpickr-append">\
-                        <div class="flatpickr-clear">X</div>\
-                        <div class="flatpickr-check">✓</div>\
-                      </div>');
-          $cal.find('.flatpickr-clear').on('click', function() {
-            instance.clear();
-          });
-          $cal.find('.flatpickr-check').on('click', function() {
-            instance.close();
-          });
-        }
-      },
-      onOpen: function(selectedDates, dateStr, instance) {
-        console.log('open1');
-        instance.redraw();
-      },
-      onClose: function(selectedDates, dateStr, instance) {
-        console.log('close1');
-        instance.redraw();
-      },
-      onValueUpdate: function(selectedDates, dateStr, instance) {
-        console.log({
-          selectedDates,
-          dateStr,
-          instance,
-        })
-        //instance.open();
-      },
-      onChange: function(selectedDates, dateStr, instance) {
-        console.log({
-          conf: instance.config,
-          selectedDates,
-          dateStr,
-          instance,
-        });
-      }
-    },
-      
     build: function() {
       this.$header.html(this.buildTitle() + this.buildOptionsGroup()).addClass("userblocks__header-" + this.options.colorScheme)
     },
@@ -679,12 +633,26 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
     },
     openDatePicker: function() {
       var $cal = this.$calendar;
-      var $fp = $cal.flatpickr(this.flatpickr_options);
-      $cal.append($fp);
-      // if ($cal.find('.flatpickr-append').length < 1) {
-      //   $cal.append('<div class="flatpickr-append"><div class="flatpickr-clear">X</div><div class="flatpickr-check">✓</div></div>');
-      // }
-      $fp.open();
+      var self = this;
+      this.$fp = $cal.flatpickr({
+        mode: "range",
+        dateFormat: "M. d, Y",
+        inline: true,
+        static: true,
+        ov: this,
+        onReady: function(selectedDates, dateStr, instance) {
+          self.fpReady(selectedDates, dateStr, instance);
+        },
+        onValueUpdate: function(selectedDates, dateStr, instance) {
+          self.fpValueUpdate(selectedDates, dateStr, instance);
+        },
+        onClose: function(selectedDates, dateStr, instance) {
+          self.fpClose(selectedDates, dateStr, instance);
+        },
+        onChange: function(selectedDates, dateStr, instance) {
+          self.fpChange(selectedDates, dateStr, instance);
+        },
+      });
       $cal.show();
     },
     closeDatePicker: function() {
@@ -725,6 +693,52 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
     toggleIconActive: function() {
       $('.js__choices div').removeClass('active');
       this.$currentIcon.hasClass("active") ? this.$currentIcon.removeClass("active") : this.$currentIcon.addClass("active")
+    },
+    fpReady: function(selectedDates, dateStre, instance) {
+      var self = this;
+      var $cal = $(instance.calendarContainer);
+      //$cal.append($('.flatpickr-calendar'));
+      if ($cal.find('.flatpickr-append').length < 1) {
+        $cal.append('<div class="flatpickr-append">\
+                      <div class="flatpickr-clear">X</div>\
+                      <div class="flatpickr-check">✓</div>\
+                    </div>');
+        $cal.find('.flatpickr-clear').on('click', function() {
+          instance.clear();
+        });
+        $cal.find('.flatpickr-check').on('click', function(dateStr) {
+          instance.setDate(dateStr);
+          self.closeDatePicker();
+        });
+      }
+
+    },
+    fpValueUpdate: function(selectedDates, dateStr, instance) {
+      console.log({
+        'call':'fpValueUpdate',
+        selectedDates,
+        dateStr,
+        instance,
+      })
+      instance.open();
+    },
+    fpClose: function(selectedDates, dateStr, instance) {
+      console.log({
+        'call':'fpClose',
+        selectedDates,
+        dateStr,
+        instance,
+      })
+      instance.open();
+    },
+    fpChange: function (selectedDates, dateStr, instance) {
+      var inp = $(instance.input);
+      $(inp).val(dateStr);
+      console.log({
+        selectedDates,
+        dateStr,
+        instance,
+      });
     }
   }
 }(jQuery);
@@ -849,86 +863,47 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
   }
 }(jQuery);
 
-!function() {
-  /*
-  $(".calendar").flatpickr({
-    mode: "range",
-    dateFormat: "M. d, Y",
-    onReady: function(dateObj, dateStr, instance) {
-      var $cal = $(instance.calendarContainer);
-      if ($cal.find('.flatpickr-append').length < 1) {
-        $cal.append('<div class="flatpickr-append"><div class="flatpickr-clear">X</div><div class="flatpickr-check">✓</div></div>');
-        $cal.find('.flatpickr-clear').on('click', function() {
-          instance.clear();
-        });
-        $cal.find('.flatpickr-check').on('click', function() {
-          instance.close();
-        });
-      }  
-    },
-    onOpen: function(selectedDates, dateStr, instance) {
-      console.log('open1');
-      instance.redraw();
-    },
-
-    onValueUpdate: function(selectedDates, dateStr, instance) {
-      console.log({
-        selectedDates,
-        dateStr,
-        instance,
-      })
-      instance.open();
-    },
-    onChange: function(selectedDates, dateStr, instance) {
-      console.log({
-        conf: instance.config,
-        selectedDates,
-        dateStr,
-        instance,
-      });
-    }
-
-
-  }), */
-  $(".js__userblocks-header-rr").userblocksHeader({
-    colorScheme: "primary",
-    title: "my recognition",
-    filters: [{
-      img: "recognition",
-      copy: "my recognition"
-    }, {
-      img: "location",
-      copy: "my location"
-    }, {
-      img: "my-team",
-      copy: "my team"
-    }, {
-      img: "viewAll",
-      copy: "view all"
-    }]
-  }), $(".js__userblocks-container-rr").userblocksContent({
-    colorScheme: "primary",
-    users: users,
-    swipeClass: "js__userblocks-swipe"
-  }), $(".js__userblocks-header-ue").userblocksHeader({
-    colorScheme: "secondary",
-    title: "upcoming events",
-    filters: [{
-      img: "location-secondary",
-      copy: "my location"
-    }, {
-      img: "my-team-secondary",
-      copy: "my team"
-    }, {
-      img: "viewAll-secondary",
-      copy: "view all"
-    }]
-  }), $(".js__userblocks-container-ue").userblocksContent({
-    colorScheme: "secondary",
-    users: users2,
-    swipeClass: "js__userblocks-swipe"
-  })
-}(jQuery);
+$(".js__userblocks-header-rr").userblocksHeader({
+  colorScheme: "primary",
+  title: "my recognition",
+  filters: [{
+    img: "recognition",
+    copy: "my recognition"
+  }, {
+    img: "location",
+    copy: "my location"
+  }, {
+    img: "my-team",
+    copy: "my team"
+  }, {
+    img: "viewAll",
+    copy: "view all"
+  }]
+}), 
+$(".js__userblocks-container-rr").userblocksContent({
+  colorScheme: "primary",
+  users: users,
+  swipeClass: "js__userblocks-swipe"
+}), 
+$(".js__userblocks-header-ue").userblocksHeader({
+  colorScheme: "secondary",
+  title: "upcoming events",
+  filters: [{
+    img: "location-secondary",
+    copy: "my location"
+  }, {
+    img: "my-team-secondary",
+    copy: "my team"
+  }, {
+    img: "viewAll-secondary",
+    copy: "view all"
+  }]
+}), 
+$(".js__userblocks-container-ue").userblocksContent({
+  colorScheme: "secondary",
+  users: users2,
+  swipeClass: "js__userblocks-swipe"
+})
 
 
 $(function() {
