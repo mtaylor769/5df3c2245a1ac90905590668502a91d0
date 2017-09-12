@@ -279,10 +279,15 @@ var users = [{
       this.$item.html(this.buildImage() + this.buildInfo() + this.buildOptionsContainer() + this.buildOptions() + this.buildDate())
     },
     buildImage: function(t) {
-      return '<div class="userblocks__img js__userblocks-avatar">          <img src="' + this.user.imgUrl + '" alt="' + this.user.name + '">        </div>'
+      return '<div class="userblocks__img js__userblocks-avatar"><img src="' + this.user.imgUrl + '" alt="' + this.user.name + '"></div>';
     },
     buildInfo: function() {
-      return '<div class="userblocks__copy">            <h5 class="copy__firm-' + this.options.colorScheme + '">' + this.user.name + '</h5>            <h5 class="copy__light-' + this.options.colorScheme + '">' + this.user.title + '</h5>            <h5 class="copy__light-' + this.options.colorScheme + '">' + this.user.location + '</h5>            <h5 class="copy__light">Received ' + this.user.award + "</h5>          </div>"
+      return '<div class="userblocks__copy">\
+                <h5 class="copy__firm-' + this.options.colorScheme + '">' + this.user.name + '</h5>\
+                <h5 class="copy__light-' + this.options.colorScheme + '">' + this.user.title + '</h5>\
+                <h5 class="copy__light-' + this.options.colorScheme + '">' + this.user.location + '</h5>\
+                <h5 class="copy__light">Received ' + this.user.award + '</h5>\
+              </div>';
     },
     buildDate: function() {
       var t = new Date(this.user.date),
@@ -290,10 +295,16 @@ var users = [{
         e = t.getDate(),
         s = t.getFullYear(),
         o = i[t.getMonth()];
-      return '<div class="userblocks__tag-' + this.options.colorScheme + '">          <div>            <div>' + o + "</div>            <div>" + e + "</div>            <div>" + s + "</div>          </div>        </div>"
+      return '<div class="userblocks__tag-' + this.options.colorScheme + '">\
+                <div>\
+                  <div>' + o + '</div>\
+                  <div>' + e + '</div>\
+                  <div>' + s + '</div>\
+                  </div>\
+              </div>';
     },
     buildOptionsContainer: function() {
-      return '<div class="options__container js__options-container"></div>'
+      return '<div class="options__container js__options-container"></div>';
     },
     buildOptions: function(t) {
       var i = this,
@@ -342,11 +353,31 @@ var users = [{
     buildCommentsWrite: function() {
       var t = this.user.name,
         i = this.user.award;
-      return '<article class="options__body-write options__tab active" id="' + this.options.commentTabName + '">          <div>            <div class="copy__firm-' + this.options.colorScheme + '">' + t + '</div>            <div class="copy__light">Received ' + i + '</div>          </div>          <div>            <textarea class="input__comment-' + this.options.colorScheme + ' js__comment-area" maxlength="' + this.options.commentLimitChars + '" placeholder="my comment..."></textarea>            <div>              <p class="js__comment-limit">140</p>              <button class="btn__md icon__comment-submit js__comment-submit" type="submit" disabled="disabled"></button>            </div>          </div>        </article>'
+      return '<article class="options__body-write options__tab active" id="' + this.options.commentTabName + '">\
+                <div>\
+                  <div class="copy__firm-' + this.options.colorScheme + '">' + t + '</div>\
+                  <div class="copy__light">Received ' + i + '</div>\
+                </div>\
+                <div>\
+                  <textarea class="input__comment-' + this.options.colorScheme + ' js__comment-area" maxlength="' + this.options.commentLimitChars + '" placeholder="my comment..."></textarea>\
+                  <div>\
+                    <p class="js__comment-limit">140</p>\
+                    <button class="btn__md icon__comment-submit js__comment-submit" type="submit" disabled="disabled"></button>\
+                  </div>\
+                </div>\
+              </article>';
     },
     buildCommentsRead: function() {
       var t = this.user.actions.comments;
-      return '<article class="options__body-read options__tab" id="comment-tab-view">' + this.mapComments(t) + '<button class="btn__sm icon__like-' + this.options.colorScheme + '"></button>          <div>            <button class="btn__sm icon__up js__scroll-comments" data-direction="backward"></button>            <div class="js__scroll-comments-current">1</div>            <div>' + t.length + '</div>            <button class="btn__sm icon__down js__scroll-comments" data-direction="forward"></button>          </div>        </article>'
+      return '<article class="options__body-read options__tab" id="comment-tab-view">' + this.mapComments(t) + '\
+                <button class="btn__sm icon__like-' + this.options.colorScheme + '"></button>\
+                <div>\
+                  <button class="btn__sm icon__up js__scroll-comments" data-direction="backward"></button>\
+                  <div class="js__scroll-comments-current">1</div>\
+                  <div>' + t.length + '</div>\
+                  <button class="btn__sm icon__down js__scroll-comments" data-direction="forward"></button>\
+                </div>\
+              </article>'
     },
     mapComments: function(t) {
       return t.map(function(t, i) {
@@ -374,11 +405,22 @@ var users = [{
     },
     buildSectionLikes: function() {
       var t = this.user.actions.likes;
-      return '<div>          <header class="options__header-' + this.options.colorScheme + '">            <p>like</p>            <div class="group__inline-pipe-' + this.options.colorScheme + '">              <button type="button" class="btn__md" disabled><span class="js__number-of-likes">' + t.length + '</span></button>              <button type="button" class="btn__md icon__close-' + this.options.colorScheme + ' js__options-close"></button>            </div>          </header>          <article class="options__body-like">            <ul>' + this.mapLikes(t) + "</ul>          </article>        </div>"
+      return '<div>\
+                <header class="options__header-' + this.options.colorScheme + '">\
+                  <p>like</p>\
+                  <div class="group__inline-pipe-' + this.options.colorScheme + '">\
+                    <button type="button" class="btn__md" disabled><span class="js__number-of-likes">' + t.length + '</span></button>\
+                    <button type="button" class="btn__md icon__close-' + this.options.colorScheme + ' js__options-close"></button>\
+                  </div>\
+                </header>\
+                <article class="options__body-like">\
+                  <ul>' + this.mapLikes(t) + '</ul>\
+                </article>\
+              </div>';
     },
     mapLikes: function(t) {
       return t.map(function(t, i) {
-        return '<li id="js__likes-' + i + '" class="copy__firm">' + t + "</li>"
+        return '<li id="js__likes-' + i + '" class="copy__firm">' + t + '</li>';
       }).join("")
     },
     initSectionOutlook: function() {
@@ -390,7 +432,11 @@ var users = [{
     },
     buildSectionOutlook: function() {
       this.user.actions.outlook;
-      return '<div>          <header class="options__header-secondary">            <p>added to outlook</p>          </header>        </div>'
+      return '<div>\
+                <header class="options__header-secondary">\
+                  <p>added to outlook</p>\
+                </header>\
+              </div>';
     },
     targetContainers: function() {
       this.$optionsOpen = this.$item.find(".js__options-open"), this.$optionsContainer = this.$item.find(".js__options-container"), this.$avatar = this.$item.find(".js__userblocks-avatar"), this.$actionsContainer = this.$item.find(".userblocks__options"), this.$tabTargets = this.$item.find(".options__tab")
@@ -511,7 +557,10 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
         var $cal = $(instance.calendarContainer);
         //$cal.append($('.flatpickr-calendar'));
         if ($cal.find('.flatpickr-append').length < 1) {
-          $cal.append('<div class="flatpickr-append"><div class="flatpickr-clear">X</div><div class="flatpickr-check">✓</div></div>');
+          $cal.append('<div class="flatpickr-append">\
+                        <div class="flatpickr-clear">X</div>\
+                        <div class="flatpickr-check">✓</div>\
+                      </div>');
           $cal.find('.flatpickr-clear').on('click', function() {
             instance.clear();
           });
@@ -564,7 +613,13 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
       return  '<div class="userblocks__header-choices">' + ((this.options.colorScheme === 'secondary') ? this.buildDatePicker() : "") + this.buildOptions() + this.buildSearch() + "</div>"
     },
     buildSearch: function() {
-      return '<div class="userblocks__header-search-' + this.options.colorScheme + ' js__search-box">          <form>            <button class="btn__md icon__search-' + this.options.colorScheme + ' js__submit-search js__close-search" type="submit"></button>            <input type="search" class="input__search-' + this.options.colorScheme + ' js__search-input" name="js__userblocks-search" placeholder="' + this.options.searchPlaceholderCopy + '"/>          </form>          <button class="btn__md icon__search-' + this.options.colorScheme + ' js__open-search" type="button"></button>        </div>'
+      return '<div class="userblocks__header-search-' + this.options.colorScheme + ' js__search-box">\
+                <form>\
+                  <button class="btn__md icon__search-' + this.options.colorScheme + ' js__submit-search js__close-search" type="submit"></button>\
+                  <input type="search" class="input__search-' + this.options.colorScheme + ' js__search-input" name="js__userblocks-search" placeholder="' + this.options.searchPlaceholderCopy + '"/>\
+                </form>\
+              <button class="btn__md icon__search-' + this.options.colorScheme + ' js__open-search" type="button"></button>\
+            </div>';
     },
     buildOptions: function() {
       if (this.options.filters) 
