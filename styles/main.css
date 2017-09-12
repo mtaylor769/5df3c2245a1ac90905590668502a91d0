@@ -9645,7 +9645,31 @@ body {
   border-right: 1px solid #fff;
   right: -5px;
   padding-right: 5px;
+  z-index:2;
+  -webkit-justify-content: flex-start;
+  -moz-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  position: relative;
 }  
+
+.js__calendar-range-container {
+  position: absolute;
+  top: 0px;
+  right: 35px;
+  z-index: 3;
+  width: auto;
+  height: 350px;
+  display: none;
+}
+.js__calendar-range-container.active {
+  display: block;
+}  
+.js__calendar-range-container .flatpickr-calendar {
+  position: absolute;
+  right: -75px;
+  top: 35px;
+}
 
 .userblocks__container>li:not(:last-child) {
   border-bottom: 2px solid #f9f4f4;

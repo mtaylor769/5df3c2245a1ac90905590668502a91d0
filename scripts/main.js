@@ -243,7 +243,7 @@ var users = [{
     return typeof t
   } : function(t) {
     return t && "function" == typeof Symbol && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : typeof t
-  };
+  };  
 ! function(t) {
   t.fn.userblocksItem = function(e) {
     return this.each(function() {
@@ -483,6 +483,49 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
   };
   i.prototype = {
     constructor: i,
+    flatpickr_options: {
+      mode: "range",
+      dateFormat: "M. d, Y",
+      inline: true,
+      onReady: function(selectedDates, dateStr, instance) {
+        var $cal = $(instance.calendarContainer);
+        //$cal.append($('.flatpickr-calendar'));
+        if ($cal.find('.flatpickr-append').length < 1) {
+          $cal.append('<div class="flatpickr-append"><div class="flatpickr-clear">X</div><div class="flatpickr-check">✓</div></div>');
+          $cal.find('.flatpickr-clear').on('click', function() {
+            instance.clear();
+          });
+          $cal.find('.flatpickr-check').on('click', function() {
+            instance.close();
+          });
+        }
+      },
+      onOpen: function(selectedDates, dateStr, instance) {
+        console.log('open1');
+        instance.redraw();
+      },
+      onClose: function(selectedDates, dateStr, instance) {
+        console.log('close1');
+        instance.redraw();
+      },
+      onValueUpdate: function(selectedDates, dateStr, instance) {
+        console.log({
+          selectedDates,
+          dateStr,
+          instance,
+        })
+        //instance.open();
+      },
+      onChange: function(selectedDates, dateStr, instance) {
+        console.log({
+          conf: instance.config,
+          selectedDates,
+          dateStr,
+          instance,
+        });
+      }
+    },
+      
     build: function() {
       this.$header.html(this.buildTitle() + this.buildOptionsGroup()).addClass("userblocks__header-" + this.options.colorScheme)
     },
@@ -512,14 +555,14 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
     },
     buildDatePicker: function() {
       return '<div class="userblocks__calendar-range-' + this.options.colorScheme + ' js__date-box">\
-                <button class="btn__md icon__calendar-range-' + this.options.colorScheme + ' js__close-calendar-range" type="submit"></button>\
-                <div>\
+                <div class="js__calendar-range-container">\
                   <section class="calendar" style="display:none"> \
-                    <form><input type="text" class="js__calendar" readonly="readonly" placeholder="Select date range...">\
-                      <label for="js__calendar-reset"><input type="reset" value="reset" id="js__calendar-reset"></label>\
+                    <form>\
+                      <input type="text" class="js__calendar" readonly="readonly" placeholder="Select date range...">\
                     </form>\
                   </section>\
                 </div>\
+                <button class="btn__md icon__calendar-range-' + this.options.colorScheme + ' js__toggle-calendar-range" type="submit"></button>\
               </div>';
     },
     buildOptionsList: function() {
@@ -535,10 +578,10 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
       return /Mobi/i.test(navigator.userAgent) || /Android/i.test(navigator.userAgent)
     },
     targetContainers: function() {
-      this.$searchInput = this.$header.find(".js__search-input"), this.$searchBox = this.$header.find(".js__search-box"), this.$openSearch = this.$header.find(".js__open-search"), this.$closeSearch = this.$header.find(".js__close-search"), this.$submitSearch = this.$header.find(".js__submit-search"), this.$choiceContainer = this.$header.find(".js__userblocks-choice-container"), this.$openHeader = this.$choiceContainer.find(".js__open-header"), this.$choices = this.$choiceContainer.find(".js__choices"), this.$headerCopyContainer = this.$header.find(".js__userblocks-header-copy"), this.$headerCopySpan = this.$headerCopyContainer.find("span:nth-child(2)")
+      this.$flatpickr = this.$header.find(".calendar"), this.$searchInput = this.$header.find(".js__search-input"), this.$searchBox = this.$header.find(".js__search-box"), this.$calendar = this.$header.find(".calendar"), this.$toggleDateRange = this.$header.find(".js__toggle-calendar-range"), this.$openSearch = this.$header.find(".js__open-search"), this.$closeSearch = this.$header.find(".js__close-search"), this.$submitSearch = this.$header.find(".js__submit-search"), this.$choiceContainer = this.$header.find(".js__userblocks-choice-container"), this.$openHeader = this.$choiceContainer.find(".js__open-header"), this.$choices = this.$choiceContainer.find(".js__choices"), this.$headerCopyContainer = this.$header.find(".js__userblocks-header-copy"), this.$headerCopySpan = this.$headerCopyContainer.find("span:nth-child(2)")
     },
     bindActions: function() {
-      this.$openSearch.bind("click", t.proxy(this.startSearching, this)), this.$closeSearch.bind("click", t.proxy(this.doneSearching, this)), this.$submitSearch.bind("click", t.proxy(this.goSearch, this)), this.$openHeader.bind("click", t.proxy(this.openHeader, this, void 0)), this.$choices.bind("click", t.proxy(this.makeChoiceSelection, this, void 0)), this.$searchInput.on("search", t.proxy(this.doneSearching, this, void 0))
+      this.$toggleDateRange.bind("click", t.proxy(this.toggleDateRange, this)), this.$openSearch.bind("click", t.proxy(this.startSearching, this)), this.$closeSearch.bind("click", t.proxy(this.calen, this)), this.$submitSearch.bind("click", t.proxy(this.goSearch, this)), this.$openHeader.bind("click", t.proxy(this.openHeader, this, void 0)), this.$choices.bind("click", t.proxy(this.makeChoiceSelection, this, void 0)), this.$searchInput.on("search", t.proxy(this.doneSearching, this, void 0))
     },
     makeActive: function(t) {
       t.hasClass("active") || t.addClass("active")
@@ -551,6 +594,26 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
     },
     doneSearching: function() {
       this.$openSearch.show(), this.$submitSearch.hide(), this.makeInactive(this.$header), this.makeInactive(this.$submitSearch), this.makeInactive(this.$searchBox), this.$searchInput.val("")
+    },
+    toggleDateRange: function() {
+      this.doneSearching(), this.closeHeader(), this.openDatePicker(), this.toggleCalendar();
+    },
+    toggleCalendar: function() {
+      var p = this.$calendar.parent();
+      p.hasClass('active') ? this.makeInactive(p) : this.makeActive(p);
+    },
+    openDatePicker: function() {
+      var $cal = this.$calendar;
+      var $fp = $cal.flatpickr(this.flatpickr_options);
+      $cal.append($fp);
+      // if ($cal.find('.flatpickr-append').length < 1) {
+      //   $cal.append('<div class="flatpickr-append"><div class="flatpickr-clear">X</div><div class="flatpickr-check">✓</div></div>');
+      // }
+      $fp.open();
+      $cal.show();
+    },
+    closeDatePicker: function() {
+      this.$calendar.hide();
     },
     delay: function(t, i) {
       var e = this;
@@ -565,7 +628,7 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
       this.$currentChoice.removeClass("active")
     },
     openHeader: function(t, i) {
-      this.doneSearching(), this.makeActive(this.$choiceContainer), this.makeActive(this.$header)
+      this.toggleCalendar(), this.doneSearching(), this.makeActive(this.$choiceContainer), this.makeActive(this.$header)
     },
     closeHeader: function() {
       this.makeInactive(this.$choiceContainer), this.makeInactive(this.$header)
@@ -720,8 +783,10 @@ var isOpera = !!window.opera || navigator.userAgent.indexOf(" OPR/") >= 0,
   isChrome = !!window.chrome && !!window.chrome.webstore,
   isBlink = (isChrome || isOpera) && !!window.CSS,
   isMobile = /Mobi/i.test(navigator.userAgent) || /Android/i.test(navigator.userAgent);
-$(function() {
-  $(".js__calendar").flatpickr({
+
+!function() {
+  /*
+  $(".calendar").flatpickr({
     mode: "range",
     dateFormat: "M. d, Y",
     onReady: function(dateObj, dateStr, instance) {
@@ -759,7 +824,8 @@ $(function() {
     }
 
 
-  }), $(".js__userblocks-header-rr").userblocksHeader({
+  }), */
+  $(".js__userblocks-header-rr").userblocksHeader({
     colorScheme: "primary",
     title: "recent recognition",
     filters: [{
@@ -797,7 +863,7 @@ $(function() {
     users: users2,
     swipeClass: "js__userblocks-swipe"
   })
-});
+}(jQuery);
 
 
 $(function() {
