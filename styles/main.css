@@ -5754,7 +5754,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
   background-repeat: no-repeat;
   background-position: 50%;
   transition: background .15s ease-in-out;
-  background-image: url(../images/icon-myRec.svg);
+  background-image: url(../images/icon-myrec.svg);
 }
 
 .userblocks__quickactions-primary>button+div>button:hover .icon__recognition:after {
@@ -5842,7 +5842,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
   background-repeat: no-repeat;
   background-position: 50%;
   transition: background .15s ease-in-out;
-  background-image: url(../images/icon-myRec.svg);
+  background-image: url(../images/icon-myrec.svg);
 }
 
 .no-svg .icon__recognition-primary:after {
