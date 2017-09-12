@@ -16,6 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "angular-flatpickr": "^2.5.0"
+    "angular-flatpickr": "^2.5.0",
+    "flatpickr": "flatpickr-calendar#^3.0.7"
   }
 }
