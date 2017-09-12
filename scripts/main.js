@@ -652,7 +652,7 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
          //$('.calendar').show(), $('.selected-filter').hide(), this.$headerCopyContainer.css({display: "inline-block"}), this.$headerCopyContainer.parent().css({top: "3px"});
       } else {
         $('.calendar').hide(), $('.selected-filter').show(),
-          "recent recognition" !== this.currentHeaderCopy && "view all" !== this.currentHeaderCopy 
+          "my recognition" !== this.currentHeaderCopy && "view all" !== this.currentHeaderCopy 
           ? (this.$headerCopySpan.text(this.currentHeaderCopy), this.$headerCopyContainer.css({display: "inline-block"}), this.$headerCopyContainer.parent().css({top: "0"})) 
           : this.$headerCopyContainer.hide()
       }
@@ -684,7 +684,7 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
       swipeTargets: "js__userblocks-swipe",
       swipeWidthStart: 992,
       icons: {}
-    }, this.$body = t(i), this.options = t.extend({}, this.defaults, e), this.current = {}, this.icons = this.options.icons, this.options.toggleCopy = "primary" == this.options.colorScheme ? "upcoming events" : "recent recognition", this.options.toggleColor = "primary" == this.options.colorScheme ? "secondary" : "primary", this.build()
+    }, this.$body = t(i), this.options = t.extend({}, this.defaults, e), this.current = {}, this.icons = this.options.icons, this.options.toggleCopy = "primary" == this.options.colorScheme ? "upcoming events" : "my recognition", this.options.toggleColor = "primary" == this.options.colorScheme ? "secondary" : "primary", this.build()
   };
   i.prototype = {
     constructor: i,
@@ -837,10 +837,10 @@ var isOpera = !!window.opera || navigator.userAgent.indexOf(" OPR/") >= 0,
   }), */
   $(".js__userblocks-header-rr").userblocksHeader({
     colorScheme: "primary",
-    title: "recent recognition",
+    title: "my recognition",
     filters: [{
       img: "recognition",
-      copy: "recent recognition"
+      copy: "my recognition"
     }, {
       img: "location",
       copy: "my location"
