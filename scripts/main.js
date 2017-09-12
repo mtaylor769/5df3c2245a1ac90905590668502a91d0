@@ -317,7 +317,17 @@ var users = [{
     },
     buildSectionComments: function() {
       var t = this.user.actions.comments;
-      return '<div>          <header class="options__header-' + this.options.colorScheme + '">            <p>comment</p>            <div class="group__inline-pipe-' + this.options.colorScheme + '">              <button type="button" class="btn__md btn__hide-lg"><span>' + t.length + '</span></button>              <button type="button" class="btn__md icon__viewAll-' + this.options.colorScheme + ' js__options-comment-tab" data-target="comment-tab-view"></button>              <button type="button" class="btn__md icon__close-' + this.options.colorScheme + ' js__options-close"></button>            </div>          </header>          ' + this.buildCommentsWrite() + this.buildCommentsRead() + "        </div>"
+      return '<div>\
+                <header class="options__header-' + this.options.colorScheme + '">\
+                  <p>comment</p>\
+                  <div class="group__inline-pipe-' + this.options.colorScheme + '">\
+                    <button type="button" class="btn__md btn__hide-lg"><span>' + t.length + '</span></button>\
+                    <button type="button" class="btn__md icon__viewAll-' + this.options.colorScheme + ' js__options-comment-tab" data-target="comment-tab-view"></button>\
+                    <button type="button" class="btn__md icon__close-' + this.options.colorScheme + ' js__options-close"></button>\
+                  </div>\
+                </header>\
+                ' + this.buildCommentsWrite() + this.buildCommentsRead() + '\
+              </div>';
     },
     buildCommentsWrite: function() {
       var t = this.user.name,
