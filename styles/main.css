@@ -9626,7 +9626,7 @@ body {
   border-right: 1px solid #fff;
   right: -5px;
   padding-right: 5px;
-  z-index:2;
+  z-index:80;
   -webkit-justify-content: flex-start;
   -moz-box-pack: start;
   -ms-flex-pack: start;
@@ -10003,8 +10003,7 @@ body {
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch;
-  min-height: 175px;
-  height: 100%;
+  flex: 1 1 20%;
 }
 
 .userblocks__tag-primary>div>div:first-child {
@@ -10585,7 +10584,8 @@ only screen and (min-device-pixel-ratio: 1.5) {
   align-items: center;
 }
 
-.options__body-cards-primary button {
+.options__body-cards-primary button,
+.options__body-cards-secondary button {
   width: 49%;
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
@@ -10689,25 +10689,6 @@ only screen and (min-device-pixel-ratio: 1.5) {
   -webkit-align-items: center;
   -moz-box-align: center;
   align-items: center;
-}
-
-.options__body-cards-secondary button {
-  width: 49%;
-  -webkit-align-self: stretch;
-  -ms-flex-item-align: stretch;
-  align-self: stretch;
-  -webkit-flex-direction: column;
-  -moz-box-orient: vertical;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-justify-content: flex-end;
-  -moz-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  -ms-flex-align: center;
-  padding: 5px 0;
-  background-color: #fff;
-  transition: background .15s ease-in-out;
 }
 
 .options__body-cards-secondary button:hover {

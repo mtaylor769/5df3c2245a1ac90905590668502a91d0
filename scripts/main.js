@@ -750,7 +750,7 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
         });
         $cal.find('.flatpickr-check').on('click', function(dateStr) {
           instance.setDate(dateStr);
-          self.closeDatePicker();
+          self.closeDateRange();
         });
       }
 
@@ -762,6 +762,7 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
         dateStr,
         instance,
       })
+      $('input', instance.input).focus().val(dateStr).text(dateStr)
       instance.open();
     },
     fpClose: function(selectedDates, dateStr, instance) {
