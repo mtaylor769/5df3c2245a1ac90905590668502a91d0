@@ -557,8 +557,8 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
                 <span class="header-title">' + this.options.title + '&nbsp;</span>\
                 <div class="header-copy js__userblocks-header-copy">\
                   <section class="selected-filter"> \
-                    <span>|&nbsp;</span>\
-                    <span></span><div class="close"></div>\
+                    <span></span>\
+                    <span></span><div class="header-close"></div>\
                   </section>\
                 </div>\
               </div>'
@@ -569,7 +569,6 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
     buildSearch: function() {
       return '<div class="userblocks__header-search-' + this.options.colorScheme + ' js__search-box">\
                 <form>\
-                  <button class="btn__md icon__search-' + this.options.colorScheme + ' js__submit-search js__close-search" type="submit"></button>\
                   <input type="search" class="input__search-' + this.options.colorScheme + ' js__search-input" name="js__userblocks-search" placeholder="' + this.options.searchPlaceholderCopy + '"/>\
                 </form>\
               <button class="btn__md icon__search-' + this.options.colorScheme + ' js__open-search" type="button"></button>\
@@ -607,10 +606,10 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
       return /Mobi/i.test(navigator.userAgent) || /Android/i.test(navigator.userAgent)
     },
     targetContainers: function() {
-      this.$flatpickr = this.$header.find(".calendar"), this.$searchInput = this.$header.find(".js__search-input"), this.$searchBox = this.$header.find(".js__search-box"), this.$calendar = this.$header.find(".calendar"), this.$toggleDateRange = this.$header.find(".js__toggle-calendar-range"), this.$openSearch = this.$header.find(".js__open-search"), this.$closeSearch = this.$header.find(".js__close-search"), this.$submitSearch = this.$header.find(".js__submit-search"), this.$choiceContainer = this.$header.find(".js__userblocks-choice-container"), this.$openHeader = this.$choiceContainer.find(".js__open-header"), this.$choices = this.$choiceContainer.find(".js__choices"), this.$headerCopyContainer = this.$header.find(".js__userblocks-header-copy"), this.$headerCopySpan = this.$headerCopyContainer.find("span:nth-child(2)")
+      this.$headerCloseBtn = this.$header.find(".header-close"), this.$headerTitle = this.$header.find(".header-title"), this.$headerFilter = this.$header.find('.selected-filter'), this.$searchInput = this.$header.find(".js__search-input"), this.$searchBox = this.$header.find(".js__search-box"), this.$calendar = this.$header.find(".calendar"), this.$toggleDateRange = this.$header.find(".js__toggle-calendar-range"), this.$openSearch = this.$header.find(".js__open-search"), this.$closeSearch = this.$header.find(".js__close-search"), this.$submitSearch = this.$header.find(".js__submit-search"), this.$choiceContainer = this.$header.find(".js__userblocks-choice-container"), this.$openFilters = this.$choiceContainer.find(".js__open-header"), this.$choices = this.$choiceContainer.find(".js__choices"), this.$headerCopyContainer = this.$header.find(".js__userblocks-header-copy"), this.$headerCopySpan = this.$headerCopyContainer.find("span:nth-child(2)")
     },
     bindActions: function() {
-      this.$toggleDateRange.bind("click", t.proxy(this.toggleDateRange, this)), this.$openSearch.bind("click", t.proxy(this.startSearching, this)), this.$closeSearch.bind("click", t.proxy(this.calen, this)), this.$submitSearch.bind("click", t.proxy(this.goSearch, this)), this.$openHeader.bind("click", t.proxy(this.openHeader, this, void 0)), this.$choices.bind("click", t.proxy(this.makeChoiceSelection, this, void 0)), this.$searchInput.on("search", t.proxy(this.doneSearching, this, void 0))
+      this.$headerCloseBtn.bind("click", t.proxy(this.showDefaultCopy, this)), this.$toggleDateRange.bind("click", t.proxy(this.toggleDateRange, this)), this.$openSearch.bind("click", t.proxy(this.startSearching, this)), this.$closeSearch.bind("click", t.proxy(this.calen, this)), this.$submitSearch.bind("click", t.proxy(this.goSearch, this)), this.$openFilters.bind("click", t.proxy(this.openFilters, this, void 0)), this.$choices.bind("click", t.proxy(this.makeFilterSelection, this, void 0)), this.$searchInput.on("search", t.proxy(this.doneSearching, this, void 0))
     },
     makeActive: function(t) {
       t.hasClass("active") || t.addClass("active")
@@ -619,13 +618,13 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
       t.hasClass("active") && t.removeClass("active")
     },
     startSearching: function() {
-      this.closeHeader(), this.$openSearch.hide(), this.$submitSearch.show(), this.makeActive(this.$header), this.makeActive(this.$submitSearch), this.makeActive(this.$searchBox)
+      this.closeFilters(), this.$openSearch.hide(), this.$submitSearch.show(), this.makeActive(this.$header), this.makeActive(this.$submitSearch), this.makeActive(this.$searchBox)
     },
     doneSearching: function() {
       this.$openSearch.show(), this.$submitSearch.hide(), this.makeInactive(this.$header), this.makeInactive(this.$submitSearch), this.makeInactive(this.$searchBox), this.$searchInput.val("")
     },
     toggleDateRange: function() {
-      this.doneSearching(), this.closeHeader(), this.openDatePicker(), this.toggleCalendar();
+      this.doneSearching(), this.closeFilters(), this.openDatePicker(), this.toggleCalendar();
     },
     toggleCalendar: function() {
       var p = this.$calendar.parent();
@@ -656,7 +655,7 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
       $cal.show();
     },
     closeDatePicker: function() {
-      this.makeInactive(this.$calendar.parent())
+      this.$header.show(), this.makeInactive(this.$header)
     },
     delay: function(t, i) {
       var e = this;
@@ -664,35 +663,37 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
         e[t]()
       }, 1e3 * i)
     },
-    showChoiceText: function() {
-      this.$currentChoice.addClass("active")
-    },
-    hideChoiceText: function() {
-      this.$currentChoice.removeClass("active")
-    },
-    openHeader: function(t, i) {
+    openFilters: function(t, i) {
       this.closeDatePicker(), this.doneSearching(), this.makeActive(this.$choiceContainer), this.makeActive(this.$header)
     },
-    closeHeader: function() {
-      this.makeInactive(this.$choiceContainer), this.makeInactive(this.$header)
+    closeFilters: function() {
+      this.makeInactive(this.$choiceContainer), this.makeInactive(this.$header), this.makeInactive(this.$currentIcon)
     },
-    makeChoiceSelection: function(i, e) {
-      this.$currentChoice = t(e.currentTarget), this.$currentIcon = this.$currentChoice.find("div"), this.currentHeaderCopy = this.$currentChoice.find("div").text(), this.toggleIconActive(), this.showChoiceText(), this.delay("closeHeader", 1), this.delay("hideChoiceText", 1.2), /*this.delay("toggleIconActive", 1.2),*/ this.switchHeaderCopy()
+    makeFilterSelection: function(i, e) {
+      this.$currentFilter = t(e.currentTarget), this.$currentIcon = this.$currentFilter.find("div"), this.currentHeaderCopy = this.$currentFilter.find("div").text(), this.switchHeaderCopy()
     },
-    switchHeaderCopy: function(currentHeaderCopy) {
+    switchHeaderCopy: function() {
+      $('.js__choices div').removeClass('active');        
+      this.makeIconActive();
       if ("select dates" === this.currentHeaderCopy) {
-         return '';
-         //$('.calendar').show(), $('.selected-filter').hide(), this.$headerCopyContainer.css({display: "inline-block"}), this.$headerCopyContainer.parent().css({top: "3px"});
+         return;
       } else {
-        $('.calendar').hide(), $('.selected-filter').show(),
-          "my recognition" !== this.currentHeaderCopy && "view all" !== this.currentHeaderCopy 
-          ? (this.$headerCopySpan.text(this.currentHeaderCopy), this.$headerCopyContainer.css({display: "inline-block"}), this.$headerCopyContainer.parent().css({top: "0"})) 
-          : this.$headerCopyContainer.hide()
+        ("view all" === this.currentHeaderCopy) ? this.showDefaultCopy() : this.showSelectedCopy();
       }
     },
-    toggleIconActive: function() {
+    showDefaultCopy: function() {
+      this.$headerTitle.fadeIn(), this.$headerCopySpan.hide(), this.$headerCloseBtn.hide(), this.closeFilters()
+    },
+    showSelectedCopy: function() {
+      this.makeIconActive();
+      this.$headerTitle.hide(), this.$headerCopySpan.text(this.currentHeaderCopy), this.$headerCopySpan.show(), this.$headerCloseBtn.show(), this.$headerCopyContainer.show(), this.closeFilters()
+      //this.$headerCopyContainer.css({display: "inline-block"}), this.$headerCopyContainer.parent().css({top: "0"})
+    },
+    makeIconActive: function() {
+      this.makeActive(this.$currentIcon);
+    },
+    makeIconsInactive: function() {
       $('.js__choices div').removeClass('active');
-      this.$currentIcon.hasClass("active") ? this.$currentIcon.removeClass("active") : this.$currentIcon.addClass("active")
     },
     fpReady: function(selectedDates, dateStre, instance) {
       var self = this;
@@ -865,7 +866,7 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
 
 $(".js__userblocks-header-rr").userblocksHeader({
   colorScheme: "primary",
-  title: "my recognition",
+  title: "recent recognition",
   filters: [{
     img: "recognition",
     copy: "my recognition"
@@ -906,12 +907,7 @@ $(".js__userblocks-container-ue").userblocksContent({
 })
 
 
-$(function() {
-  $(".js__userblocks-header-copy .close").on("click", function() {
-    $(this).parent().hide();
-    $('.js__choices div').removeClass('active');
-  });
-  
+$(function() {  
   $(".js__userblocks-swipe").swipe({
     swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
       // PDF-2: container math to prevent scrolling offscreen

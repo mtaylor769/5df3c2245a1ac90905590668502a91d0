@@ -5758,7 +5758,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
 }
 
 .userblocks__quickactions-primary>button+div>button:hover .icon__recognition:after {
-  background-image: url(../images/icon-myRec-hover.svg);
+  background-image: url(../images/icon-myrec-hover.svg);
 }
 
 .no-svg .userblocks__quickactions-primary>button+div>button:hover .icon__recognition:after {
@@ -10987,7 +10987,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
   background: #000;
 }
 
-.js__userblocks-header-copy .close {
+.js__userblocks-header-copy .header-close {
   position: absolute;
   right: -25px;
   top: 9px;
@@ -10997,7 +10997,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
   transition: background .15s ease-in-out;
 }
 
-.js__userblocks-header-copy .close:after {
+.js__userblocks-header-copy .header-close:after {
   content: "";
   position: absolute;
   background-repeat: no-repeat;
@@ -11010,22 +11010,22 @@ only screen and (min-device-pixel-ratio: 1.5) {
   background-size: contain;
 }
 
-.js__userblocks-header-ue .js__userblocks-header-copy .close:after {
+.js__userblocks-header-ue .js__userblocks-header-copy .header-close:after {
   background-image: url(../images/bcrumb_x_ue.svg);
 }
 
-.no-svg .js__userblocks-header-copy .close:after {
+.no-svg .js__userblocks-header-copy .header-close:after {
   background-image: url(../images/bcrumb_x_rr.png);
 }
 
-.no-svg .js__userblocks-header-ue .js__userblocks-header-copy .close:after {
+.no-svg .js__userblocks-header-ue .js__userblocks-header-copy .header-close:after {
   background-image: url(../images/bcrumb_x_ue.png);
 }
 
-.js__userblocks-header-copy .close:hover:after {
+.js__userblocks-header-copy .header-close:hover:after {
   background-image: url(../images/bcrumb_x_rr_hover.svg);
 }
 
-.js__userblocks-header-ue .js__userblocks-header-copy .close:hover:after {
+.js__userblocks-header-ue .js__userblocks-header-copy .header-close:hover:after {
   background-image: url(../images/bcrumb_x_ue_hover.svg);
 }
