@@ -639,23 +639,37 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
       t.hasClass("active") && t.removeClass("active")
     },
     searchButton: function() {
-      
-      (this.$searchBox.hasClass('active')) 
+      (this.$searchInput.hasClass('active')) 
       ? (this.$searchInput.val() === '') ? this.doneSearching() : this.goSearch()
-      : this.closeFilters(), this.closeDatePicker(), this.startSearching();
+      : this.startSearching();
     },
     startSearching: function() {
-      this.makeActive(this.$searchBox)
+      console.log('startSearching')
+      this.closeFilters(), this.closeDateRange(), 
+      this.makeActive(this.$searchBox), this.makeActive(this.$searchInput)
     },
     doneSearching: function() {
-      this.makeInactive(this.$submitSearch), this.makeInactive(this.$searchBox), this.$searchInput.val('')
+      console.log('doneSearching')
+      this.makeInactive(this.$searchBox), this.makeInactive(this.$searchInput), this.$searchInput.val('');
+    },
+    goSearch: function() {
+      console.log('goSearch');
+      0;
     },
     toggleDateRange: function() {
-      this.doneSearching(), this.closeFilters(), this.openDatePicker(), this.toggleCalendar();
+      this.doneSearching(), this.closeFilters()
+      var p = this.$calendar.parent()
+      p.hasClass('active') 
+      ? this.closeDateRange() 
+      : this.openDateRange()
     },
-    toggleCalendar: function() {
-      var p = this.$calendar.parent();
-      p.hasClass('active') ? this.makeInactive(p) : this.makeActive(p);
+    openDateRange: function() {
+      var p = this.$calendar.parent()
+      this.openDatePicker(), this.makeActive(p)
+    },
+    closeDateRange: function() {
+      var p = this.$calendar.parent()
+      this.closeDatePicker(), this.makeInactive(p)
     },
     openDatePicker: function() {
       var $cal = this.$calendar;
@@ -691,7 +705,7 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
       }, 1e3 * i)
     },
     openFilters: function(t, i) {
-      this.closeDatePicker(), this.doneSearching(), this.makeActive(this.$filterContainer), this.makeActive(this.$header)
+      this.closeDateRange(), this.doneSearching(), this.makeActive(this.$filterContainer), this.makeActive(this.$header)
     },
     closeFilters: function() {
       this.makeInactive(this.$filterContainer), this.makeInactive(this.$header), $('.js__filters div').removeClass('active')

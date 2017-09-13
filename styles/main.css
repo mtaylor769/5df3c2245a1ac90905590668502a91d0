@@ -9636,7 +9636,7 @@ body {
 
 .js__calendar-range-container {
   position: absolute;
-  top: 0px;
+  top: -1px;
   right: 40px;
   z-index: 3;
   width: auto;
