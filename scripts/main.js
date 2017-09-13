@@ -595,7 +595,7 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
     },
     buildOptionsList: function() {
       var t = this.options.filters.map(function(t, i) {
-        return '<button type="button" class="btn__md js__choices">\
+        return '<button type="button" class="btn__md js__filters">\
                   <div class="icon__' + t.img + '"></div>\
                   <div>' + t.copy + '</div>\
                 </button>'
@@ -606,10 +606,31 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
       return /Mobi/i.test(navigator.userAgent) || /Android/i.test(navigator.userAgent)
     },
     targetContainers: function() {
-      this.$headerCloseBtn = this.$header.find(".header-close"), this.$headerTitle = this.$header.find(".header-title"), this.$headerFilter = this.$header.find('.selected-filter'), this.$searchInput = this.$header.find(".js__search-input"), this.$searchBox = this.$header.find(".js__search-box"), this.$calendar = this.$header.find(".calendar"), this.$toggleDateRange = this.$header.find(".js__toggle-calendar-range"), this.$openSearch = this.$header.find(".js__open-search"), this.$closeSearch = this.$header.find(".js__close-search"), this.$submitSearch = this.$header.find(".js__submit-search"), this.$choiceContainer = this.$header.find(".js__userblocks-choice-container"), this.$openFilters = this.$choiceContainer.find(".js__open-header"), this.$choices = this.$choiceContainer.find(".js__choices"), this.$headerCopyContainer = this.$header.find(".js__userblocks-header-copy"), this.$headerCopySpan = this.$headerCopyContainer.find("span:nth-child(2)")
+      this.$headerTitle = this.$header.find(".header-title"), 
+      this.$headerFilter = this.$header.find('.selected-filter'), 
+      this.$searchBox = this.$header.find(".js__search-box"), 
+      this.$searchBtn = this.$header.find(".js__open-search"), 
+      this.$closeSearch = this.$header.find(".js__close-search"), 
+      this.$searchInput = this.$header.find(".js__search-input"), 
+      this.$submitSearch = this.$header.find(".js__submit-search"), 
+      this.$toggleDateRange = this.$header.find(".js__toggle-calendar-range"), 
+      this.$calendar = this.$header.find(".calendar"), 
+      this.$filterContainer = this.$header.find(".js__userblocks-choice-container"), 
+      this.$filters = this.$filterContainer.find(".js__filters"), 
+      this.$openFilters = this.$filterContainer.find(".js__open-header"), 
+      this.$headerCopyContainer = this.$header.find(".js__userblocks-header-copy"), 
+      this.$headerCopySpan = this.$headerCopyContainer.find("span:nth-child(2)"),
+      this.$headerCloseBtn = this.$header.find(".header-close")
     },
     bindActions: function() {
-      this.$headerCloseBtn.bind("click", t.proxy(this.showDefaultCopy, this)), this.$toggleDateRange.bind("click", t.proxy(this.toggleDateRange, this)), this.$openSearch.bind("click", t.proxy(this.startSearching, this)), this.$closeSearch.bind("click", t.proxy(this.calen, this)), this.$submitSearch.bind("click", t.proxy(this.goSearch, this)), this.$openFilters.bind("click", t.proxy(this.openFilters, this, void 0)), this.$choices.bind("click", t.proxy(this.makeFilterSelection, this, void 0)), this.$searchInput.on("search", t.proxy(this.doneSearching, this, void 0))
+      this.$toggleDateRange.bind("click", t.proxy(this.toggleDateRange, this)), 
+      this.$searchBtn.bind("click", t.proxy(this.searchButton, this)), 
+      this.$closeSearch.bind("click", t.proxy(this.doneSearching, this)), 
+      this.$searchInput.on("search", t.proxy(this.doneSearching, this, void 0)),
+      this.$submitSearch.bind("click", t.proxy(this.goSearch, this)), 
+      this.$openFilters.bind("click", t.proxy(this.openFilters, this, void 0)), 
+      this.$filters.bind("click", t.proxy(this.makeFilterSelection, this, void 0)), 
+      this.$headerCloseBtn.bind("click", t.proxy(this.showDefaultCopy, this))
     },
     makeActive: function(t) {
       t.hasClass("active") || t.addClass("active")
@@ -617,11 +638,17 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
     makeInactive: function(t) {
       t.hasClass("active") && t.removeClass("active")
     },
+    searchButton: function() {
+      
+      (this.$searchBox.hasClass('active')) 
+      ? (this.$searchInput.val() === '') ? this.doneSearching() : this.goSearch()
+      : this.closeFilters(), this.closeDatePicker(), this.startSearching();
+    },
     startSearching: function() {
-      this.closeFilters(), this.$openSearch.hide(), this.$submitSearch.show(), this.makeActive(this.$header), this.makeActive(this.$submitSearch), this.makeActive(this.$searchBox)
+      this.makeActive(this.$searchBox)
     },
     doneSearching: function() {
-      this.$openSearch.show(), this.$submitSearch.hide(), this.makeInactive(this.$header), this.makeInactive(this.$submitSearch), this.makeInactive(this.$searchBox), this.$searchInput.val("")
+      this.makeInactive(this.$submitSearch), this.makeInactive(this.$searchBox), this.$searchInput.val('')
     },
     toggleDateRange: function() {
       this.doneSearching(), this.closeFilters(), this.openDatePicker(), this.toggleCalendar();
@@ -664,16 +691,16 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
       }, 1e3 * i)
     },
     openFilters: function(t, i) {
-      this.closeDatePicker(), this.doneSearching(), this.makeActive(this.$choiceContainer), this.makeActive(this.$header)
+      this.closeDatePicker(), this.doneSearching(), this.makeActive(this.$filterContainer), this.makeActive(this.$header)
     },
     closeFilters: function() {
-      this.makeInactive(this.$choiceContainer), this.makeInactive(this.$header), this.makeInactive(this.$currentIcon)
+      this.makeInactive(this.$filterContainer), this.makeInactive(this.$header), $('.js__filters div').removeClass('active')
     },
     makeFilterSelection: function(i, e) {
       this.$currentFilter = t(e.currentTarget), this.$currentIcon = this.$currentFilter.find("div"), this.currentHeaderCopy = this.$currentFilter.find("div").text(), this.switchHeaderCopy()
     },
     switchHeaderCopy: function() {
-      $('.js__choices div').removeClass('active');        
+      $('.js__filters div').removeClass('active');        
       this.makeIconActive();
       if ("select dates" === this.currentHeaderCopy) {
          return;
@@ -693,7 +720,7 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
       this.makeActive(this.$currentIcon);
     },
     makeIconsInactive: function() {
-      $('.js__choices div').removeClass('active');
+      $('.js__filters div').removeClass('active');
     },
     fpReady: function(selectedDates, dateStre, instance) {
       var self = this;

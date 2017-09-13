@@ -8355,7 +8355,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
 .btn__md span {
   text-align: center;
   width: 100%;
-  min-height:30px;
+  /* min-height:30px; */
 }
 
 .btn__md__md-lg {
@@ -9335,7 +9335,8 @@ body {
   align-self: stretch;
 }
 
-.userblocks__header-search-primary form {
+.userblocks__header-search-primary form,
+.userblocks__header-search-secondary form {
   display: -webkit-flex;
   display: -moz-box;
   display: -ms-flexbox;
@@ -9354,7 +9355,7 @@ body {
   -ms-flex-align: center;
   align-items: center;
   position: absolute;
-  right: 0;
+  right: 100px;
   width: 0;
   bottom: 0;
   top: 0;
@@ -9364,7 +9365,7 @@ body {
 
 .userblocks__header-search-primary.active form,
 .userblocks__header-search-secondary.active form {
-  /*width: calc(100vw - 75px);*/
+  width: calc(100vw - 75px);
   transition: width .25s ease-in-out;
 }
 
@@ -9388,8 +9389,7 @@ body {
 @media (min-width: 1200px) and (max-width: 1383px) {
   .userblocks__header-search-primary.active form,
   .userblocks__header-search-secondary.active form {
-    width: calc(40vw - 75px);
-    right: 120px;
+    width: calc(42vw - 75px);
   }
 }
 
@@ -9450,8 +9450,7 @@ body {
   align-self: stretch;
 }
 
-.userblocks__header-search-secondary,
-.userblocks__header-search-secondary form {
+.userblocks__header-search-secondary {
   display: -webkit-flex;
   display: -moz-box;
   display: -ms-flexbox;
@@ -9464,21 +9463,6 @@ body {
   -webkit-align-items: center;
   -moz-box-align: center;
   align-items: center;
-}
-
-.userblocks__header-search-secondary form {
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -ms-flex-pack: end;
-  -ms-flex-align: center;
-  position: absolute;
-  right: 0;
-  width: 0;
-  bottom: 0;
-  top: 0;
-  overflow-x: hidden;
-  transition: width .25s ease-in-out;
 }
 
 .userblocks__header-search-secondary.active [type=search] {
@@ -9495,16 +9479,19 @@ body {
   padding: 0 15px;
 }
 
-.userblocks__quickactions-primary>button+div {
+.userblocks__quickactions-primary>button+div,
+.userblocks__quickactions-secondary>button+div {
   width: auto;
   max-width: 0;
   overflow: hidden;
   position: absolute;
-  top: -1px;
+  top: 0;
   right: 5px;
+  transition: max-width .25s ease-in-out;
+}
+.userblocks__quickactions-primary>button+div {
   background: #007fb6;
   border-right: 1px solid #0b2d71;
-  transition: max-width .25s ease-in-out;
 }
 
 .userblocks__quickactions-primary>button+div>button {
@@ -9572,15 +9559,8 @@ body {
 }
 
 .userblocks__quickactions-secondary>button+div {
-  width: auto;
-  max-width: 0;
-  overflow: hidden;
-  position: absolute;
-  top: -1px;
-  right: 5px;
   background: #ffcb00;
   border-right: 1px solid #fff;
-  transition: max-width .25s ease-in-out;
 }
 
 .userblocks__quickactions-secondary>button+div>button {
@@ -10495,20 +10475,9 @@ only screen and (min-device-pixel-ratio: 1.5) {
   -ms-flex: 1;
   flex: 1;
   width: 100%;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -moz-box-orient: vertical;
-  -moz-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-justify-content: flex-start;
-  -moz-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
+  height: calc(100% - 40px);
   padding: 10px 10px 0 20px;
+  overflow-y: auto;
 }
 
 .options__body-write>div:first-child {
