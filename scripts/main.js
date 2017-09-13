@@ -806,7 +806,7 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
       swipeTargets: "js__userblocks-swipe",
       swipeWidthStart: 992,
       icons: {}
-    }, this.$body = t(i), this.options = t.extend({}, this.defaults, e), this.current = {}, this.icons = this.options.icons, this.options.toggleCopy = "primary" == this.options.colorScheme ? "upcoming events" : "my recognition", this.options.toggleColor = "primary" == this.options.colorScheme ? "secondary" : "primary", this.build()
+    }, this.$body = t(i), this.options = t.extend({}, this.defaults, e), this.current = {}, this.icons = this.options.icons, this.options.toggleCopy = "primary" == this.options.colorScheme ? "upcoming events" : "recent recognition", this.options.toggleColor = "primary" == this.options.colorScheme ? "secondary" : "primary", this.build()
   };
   i.prototype = {
     constructor: i,
